@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 // For Next.js 12 or older (Pages Router), you'd do:
 // import { useRouter } from 'next/router';
 
+
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   
