@@ -37,13 +37,14 @@ const Navbar = () => {
 
         {/* Right side: Resume + Mobile Menu Button */}
         <div className="flex space-x-3 md:order-2">
-          <Link
-            href="/Resume.pdf"
+          <a
+            href="/GertsDev_CV.pdf"
+            download
             target="_blank"
             className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Download Resume
-          </Link>
+          </a>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             type="button"

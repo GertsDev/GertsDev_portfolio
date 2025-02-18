@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import Typewriter from "~/components/Typewriter";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -13,18 +14,18 @@ export default function HomePage() {
       */}
       <div className="grid w-full max-w-screen-xl grid-cols-1 items-center gap-8 md:grid-cols-2">
         {/* Image Section */}
-        <div className="flex justify-center">
-          {/* Remove or adjust the transform if you don't want the image mirrored */}
-          <img
-            className="h-auto w-full max-w-xs transform -scale-x-100"
+        <div className="relative h-[40rem] w-full px-4">
+          <Image
             src="/Subject 2.png"
             alt="profile"
+            fill
+            className="-scale-x-100 object-contain"
           />
         </div>
 
         {/* Text Section */}
         <div className="flex flex-col items-center md:items-start">
-          <h1 className="mb-4 max-w-2xl text-center text-2xl font-extrabold leading-none tracking-tight dark:text-white md:text-left md:text-3xl xl:text-4xl">
+          <h1 className="mb-4 max-w-2xl text-center text-2xl leading-none font-extrabold tracking-tight md:text-left md:text-3xl xl:text-4xl dark:text-white">
             Hey There! <span className="animate-waving-hand">👋</span>
             <br />
             I'm a{" "}
@@ -38,7 +39,7 @@ export default function HomePage() {
             />
           </h1>
 
-          <p className="mb-6 max-w-2xl text-center font-light text-gray-500 dark:text-gray-400 md:text-left md:text-lg lg:mb-8 lg:text-xl">
+          <p className="mb-6 max-w-2xl text-center font-light text-gray-500 md:text-left md:text-lg lg:mb-8 lg:text-xl dark:text-gray-400">
             I simplify complex problems using AI, helping businesses transform
             data into intelligent solutions and automate tasks with Generative
             AI to streamline their operations.

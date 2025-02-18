@@ -7,7 +7,7 @@ import Footer from "~/components/Footer";
 
 
 export const metadata: Metadata = {
-  title: "Gertsdev",
+  title: "GertsDev",
   description: "Kirill Gertsik's portfolio",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
