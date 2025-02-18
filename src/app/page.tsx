@@ -6,17 +6,17 @@ export default function HomePage() {
   return (
     // Outer wrapper that centers content & adds vertical padding
     <section className="flex w-full flex-col items-center justify-center px-4 py-16 md:py-24">
-      {/* 
-        A responsive grid: 
-        - 1 column on mobile 
-        - 2 columns on larger screens 
+      {/*
+        A responsive grid:
+        - 1 column on mobile
+        - 2 columns on larger screens
       */}
       <div className="grid w-full max-w-screen-xl grid-cols-1 items-center gap-8 md:grid-cols-2">
         {/* Image Section */}
         <div className="flex justify-center">
           {/* Remove or adjust the transform if you don't want the image mirrored */}
           <img
-            className="h-auto w-full max-w-sm transform -scale-x-100"
+            className="h-auto w-full max-w-xs transform -scale-x-100"
             src="/Subject 2.png"
             alt="profile"
           />
