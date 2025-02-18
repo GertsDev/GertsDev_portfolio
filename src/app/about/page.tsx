@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-800">
@@ -5,18 +7,22 @@ export default function About() {
         {/* Hero Section - NYC Theme */}
         <section className="relative mb-24 overflow-hidden rounded-3xl">
           <div className="relative h-[60vh] w-full">
-            <img
-              src="/gertsdev_about-hero.png" // Add an NYC skyline image
+            <Image
+              src="/gertsdev_about-hero.png"
               alt="NYC Skyline"
-              className="h-full w-full object-cover brightness-25"
+              fill
+              className="object-cover brightness-30"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-              <img
+              <Image
                 src="/about-avatar.png"
                 alt="Kirill Gertsik"
-                className="mb-8 h-32 w-32 rounded-full border-4 border-white/20 object-cover shadow-2xl"
+                width={128}
+                height={128}
+                className="mb-8 rounded-full border-4 border-white/20 object-cover shadow-2xl"
               />
+
               <h1 className="mb-4 text-5xl font-bold tracking-tight">
                 Kirill Gertsik
               </h1>
@@ -112,11 +118,13 @@ export default function About() {
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
             <div className="group relative overflow-hidden rounded-xl bg-white shadow-xl dark:bg-gray-800">
-              <img
+              {/* <Image
                 src="/project1.jpg"
                 alt="Project 1"
+                width={800}
+                height={192}
                 className="h-48 w-full object-cover transition-transform group-hover:scale-105"
-              />
+              /> */}
               <div className="p-6">
                 <h3 className="mb-2 text-xl font-bold">
                   AI-Powered Chat Platform
@@ -143,7 +151,7 @@ export default function About() {
         </section>
 
         {/* NYC-Focused CTA */}
-        <section className="rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 p-12 text-center text-white">
+        <section className="rounded-3xl bg-gradient-to-r from-darkBlue-600 to-blue-600 p-12 text-center text-white">
           <h2 className="mb-6 text-3xl font-bold">Looking to Hire in NYC?</h2>
           <p className="mb-8 text-lg">
             Based in New York City and ready to join a forward-thinking team.

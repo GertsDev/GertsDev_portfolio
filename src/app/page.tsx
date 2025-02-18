@@ -28,7 +28,7 @@ export default function HomePage() {
           <h1 className="mb-4 max-w-2xl text-center text-2xl leading-none font-extrabold tracking-tight md:text-left md:text-3xl xl:text-4xl dark:text-white">
             Hey There! <span className="animate-waving-hand">👋</span>
             <br />
-            I'm a{" "}
+            I&apos;m a{" "}
             <Typewriter
               texts={[
                 "Frontend Developer",

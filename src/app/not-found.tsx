@@ -7,19 +7,19 @@ const Custom404 = () => {
     <>
       <Head>
         <title>Kirill Gertsik Portfolio - 404</title>
-        <link rel="icon" href="/images/logo.png" />
+        <link rel="icon" href="/favicon.ico" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         />
       </Head>
       <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900">
-     
+
         <div className="flex-grow flex flex-col items-center justify-center text-center py-20">
           <h1 className="text-9xl font-extrabold text-blue-700 dark:text-blue-500">404</h1>
           <p className="text-2xl font-semibold text-gray-900 dark:text-white mt-4">Page Not Found</p>
           <p className="text-lg text-gray-600 dark:text-gray-400 mt-2">
-            Sorry, the page you're looking for doesn't exist.
+           { `Sorry, the page you're looking for doesn't exist.`}
           </p>
           <Link
             href="/"
