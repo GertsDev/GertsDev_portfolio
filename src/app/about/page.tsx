@@ -151,7 +151,7 @@ export default function About() {
         </section>
 
         {/* NYC-Focused CTA */}
-        <section className="rounded-3xl bg-gradient-to-r from-darkBlue-600 to-blue-600 p-12 text-center text-white">
+        <section className="rounded-3xl bg-gradient-to-r from-darkBlue-600 to-blue-900 p-12 text-center text-white">
           <h2 className="mb-6 text-3xl font-bold">Looking to Hire in NYC?</h2>
           <p className="mb-8 text-lg">
             Based in New York City and ready to join a forward-thinking team.
