@@ -16,7 +16,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} dark `}>
      <body className="flex min-h-screen flex-col">
         <Navbar />
         <main className="flex flex-grow flex-col items-center justify-center bg-gradient-to-tr from-[#0A192F] via-[#112240] to-[#0A192F] text-white">

@@ -25,7 +25,7 @@ export default function HomePage() {
 
         {/* Text Section */}
         <div className="flex flex-col items-center md:items-start">
-          <h1 className="mb-4 max-w-2xl text-center text-2xl leading-none font-extrabold tracking-tight md:text-left md:text-3xl xl:text-4xl dark:text-white">
+          <h1 className="mb-4 max-w-2xl text-center text-2xl leading-none font-extrabold tracking-tight text-white md:text-left md:text-3xl xl:text-4xl">
             Hey There! <span className="animate-waving-hand">👋</span>
             <br />
             I&apos;m a{" "}
@@ -39,7 +39,7 @@ export default function HomePage() {
             />
           </h1>
 
-          <p className="mb-6 max-w-2xl text-center font-light text-gray-500 md:text-left md:text-lg lg:mb-8 lg:text-xl dark:text-gray-400">
+          <p className="mb-6 max-w-2xl text-center font-light text-gray-400 md:text-left md:text-lg lg:mb-8 lg:text-xl">
             I simplify complex problems using AI, helping businesses transform
             data into intelligent solutions and automate tasks with Generative
             AI to streamline their operations.
@@ -48,7 +48,7 @@ export default function HomePage() {
           <div className="flex space-x-3">
             <Link
               href="/about"
-              className="inline-flex items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-base font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+              className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-base font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-900"
             >
               Hire Me
               <svg
@@ -66,7 +66,7 @@ export default function HomePage() {
 
             <Link
               href="/project"
-              className="inline-flex items-center justify-center rounded-lg border border-gray-300 px-5 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+              className="inline-flex items-center justify-center rounded-lg border border-gray-700 px-5 py-3 text-base font-medium text-white hover:bg-gray-700 focus:ring-4 focus:ring-gray-800"
             >
               <i className="fab fa-github mr-2"></i> See my work
             </Link>
@@ -76,5 +76,3 @@ export default function HomePage() {
     </section>
   );
 }
-
-

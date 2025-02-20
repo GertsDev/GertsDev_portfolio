@@ -20,7 +20,7 @@ const Typewriter: React.FC<TypewriterProps> = ({
 
   useEffect(() => {
     if (texts.length === 0) return;
-    
+
     let timeout: NodeJS.Timeout;
     const currentText = texts[textIndex] ?? '';
 
@@ -53,7 +53,7 @@ const Typewriter: React.FC<TypewriterProps> = ({
   ]);
 
   return (
-    <span className="text-blue-600 dark:text-blue-500">{displayText}</span>
+    <span className="text-blue-500">{displayText}</span>
   );
 };
 

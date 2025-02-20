@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-800">
-      <main className="container mx-auto max-w-5xl px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+      <section className="container mx-auto max-w-5xl px-6 py-12">
         {/* Hero Section - NYC Theme */}
         <section className="relative mb-24 overflow-hidden rounded-3xl">
           <div className="relative h-[60vh] w-full">
@@ -22,7 +22,6 @@ export default function About() {
                 height={128}
                 className="mb-8 rounded-full border-4 border-white/20 object-cover shadow-2xl"
               />
-
               <h1 className="mb-4 text-5xl font-bold tracking-tight">
                 Kirill Gertsik
               </h1>
@@ -55,22 +54,20 @@ export default function About() {
 
         {/* Quick Stats */}
         <section className="mb-24 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <div className="rounded-2xl bg-white p-6 text-center shadow-xl dark:bg-gray-800">
+          <div className="rounded-2xl bg-gray-800 p-6 text-center shadow-xl">
             <i className="fas fa-code mb-4 text-3xl text-blue-500"></i>
-            <h3 className="text-2xl font-bold">3+ Years</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Frontend Experience
-            </p>
+            <h3 className="text-2xl font-bold text-white">3+ Years</h3>
+            <p className="text-gray-400">Frontend Experience</p>
           </div>
-          <div className="rounded-2xl bg-white p-6 text-center shadow-xl dark:bg-gray-800">
+          <div className="rounded-2xl bg-gray-800 p-6 text-center shadow-xl">
             <i className="fas fa-project-diagram mb-4 text-3xl text-blue-500"></i>
-            <h3 className="text-2xl font-bold">50+ Projects</h3>
-            <p className="text-gray-600 dark:text-gray-400">Completed</p>
+            <h3 className="text-2xl font-bold text-white">50+ Projects</h3>
+            <p className="text-gray-400">Completed</p>
           </div>
-          <div className="rounded-2xl bg-white p-6 text-center shadow-xl dark:bg-gray-800">
+          <div className="rounded-2xl bg-gray-800 p-6 text-center shadow-xl">
             <i className="fas fa-brain mb-4 text-3xl text-blue-500"></i>
-            <h3 className="text-2xl font-bold">AI Enthusiast</h3>
-            <p className="text-gray-600 dark:text-gray-400">
+            <h3 className="text-2xl font-bold text-white">AI Enthusiast</h3>
+            <p className="text-gray-400">
               AI Implementations in real world projects
             </p>
           </div>
@@ -78,7 +75,7 @@ export default function About() {
 
         {/* Technical Skills */}
         <section className="mb-24">
-          <h2 className="mb-12 text-center text-3xl font-bold">
+          <h2 className="mb-12 text-center text-3xl font-bold text-white">
             Technical Arsenal
           </h2>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
@@ -94,13 +91,13 @@ export default function About() {
             ].map((skill) => (
               <div
                 key={skill.name}
-                className="rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800"
+                className="rounded-lg bg-gray-800 p-4 shadow-lg"
               >
                 <div className="mb-2 flex justify-between">
-                  <span className="font-semibold">{skill.name}</span>
+                  <span className="font-semibold text-white">{skill.name}</span>
                   <span className="text-blue-500">{skill.level}</span>
                 </div>
-                <div className="h-2 rounded-full bg-gray-200">
+                <div className="h-2 rounded-full bg-gray-700">
                   <div
                     className="h-2 rounded-full bg-blue-500"
                     style={{ width: skill.level }}
@@ -113,45 +110,37 @@ export default function About() {
 
         {/* Featured Projects */}
         <section className="mb-24">
-          <h2 className="mb-12 text-center text-3xl font-bold">
+          <h2 className="mb-12 text-center text-3xl font-bold text-white">
             Featured Work
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="group relative overflow-hidden rounded-xl bg-white shadow-xl dark:bg-gray-800">
-              {/* <Image
-                src="/project1.jpg"
-                alt="Project 1"
-                width={800}
-                height={192}
-                className="h-48 w-full object-cover transition-transform group-hover:scale-105"
-              /> */}
+            <div className="group relative overflow-hidden rounded-xl bg-gray-800 shadow-xl">
               <div className="p-6">
-                <h3 className="mb-2 text-xl font-bold">
+                <h3 className="mb-2 text-xl font-bold text-white">
                   AI-Powered Chat Platform
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-gray-400">
                   Built a real-time chat platform with AI integration using
                   React, Node.js, and OpenAI.
                 </p>
                 <div className="mt-4 flex gap-2">
-                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800">
                     React
                   </span>
-                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800">
                     Node.js
                   </span>
-                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800">
                     OpenAI
                   </span>
                 </div>
               </div>
             </div>
-            {/* Add more projects as needed */}
           </div>
         </section>
 
         {/* NYC-Focused CTA */}
-        <section className="rounded-3xl bg-gradient-to-r from-darkBlue-600 to-blue-900 p-12 text-center text-white">
+        <section className="from-darkBlue-600 rounded-3xl bg-gradient-to-r to-blue-900 p-12 text-center text-white">
           <h2 className="mb-6 text-3xl font-bold">Looking to Hire in NYC?</h2>
           <p className="mb-8 text-lg">
             Based in New York City and ready to join a forward-thinking team.
@@ -176,7 +165,7 @@ export default function About() {
             </a>
           </div>
         </section>
-      </main>
+      </section>
     </div>
   );
 }
