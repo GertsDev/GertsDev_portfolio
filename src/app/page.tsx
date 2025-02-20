@@ -26,23 +26,24 @@ export default function HomePage() {
         {/* Text Section */}
         <div className="flex flex-col items-center md:items-start">
           <h1 className="mb-4 max-w-2xl text-center text-2xl leading-none font-extrabold tracking-tight text-white md:text-left md:text-3xl xl:text-4xl">
-            Hey There! <span className="animate-waving-hand">👋</span>
+            Hey there! <span className="animate-waving-hand">👋</span>
             <br />
             I&apos;m a{" "}
             <Typewriter
               texts={[
                 "Frontend Developer",
-                "AI Researcher",
-                "Financial Analyst",
-                "NLP Engineer",
+                "UI/UX Innovator",
+                "",
+                "Tech Enthusiast",
               ]}
             />
           </h1>
 
           <p className="mb-6 max-w-2xl text-center font-light text-gray-400 md:text-left md:text-lg lg:mb-8 lg:text-xl">
-            I simplify complex problems using AI, helping businesses transform
-            data into intelligent solutions and automate tasks with Generative
-            AI to streamline their operations.
+            I build sleek, responsive web interfaces that help businesses crush
+            it. I turn complex challenges into clean, elegant digital
+            solutions. If you need someone who gets things done and isn’t afraid
+            to dive into the nitty-gritty, let’s chat.
           </p>
 
           <div className="flex space-x-3">

@@ -5,12 +5,34 @@ import { type Metadata } from "next";
 import Navbar from "~/components/Navbar";
 import Footer from "~/components/Footer";
 
+const host = process.env.NEXT_PUBLIC_HOST || "http://localhost:3000";
 
-export const metadata: Metadata = {
-  title: "GertsDev",
-  description: "Kirill Gertsik's portfolio",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+export const metadata = {
+  openGraph: {
+    title: "GertsDev | Kirill Gertsik's Portfolio",
+    description:
+      "Showcasing Kirill Gertsik's best web development projects, skills, and experience.",
+    url: `${host}`,
+    images: [
+      {
+        url: `${host}/.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Preview of GertsDev Portfolio",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GertsDev | Kirill Gertsik's Portfolio",
+    description:
+      "Showcasing Kirill Gertsik's best web development projects, skills, and experience.",
+    images: [`${host}/OG-PREVIEW.jpg`],
+  },
 };
+
+
 
 export default function RootLayout({
   children,
