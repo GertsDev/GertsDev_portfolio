@@ -5,9 +5,9 @@ import { type Metadata } from "next";
 import Navbar from "~/components/Navbar";
 import Footer from "~/components/Footer";
 
-const host = process.env.NEXT_PUBLIC_HOST || "http://localhost:3000";
+const host = process.env.NEXT_PUBLIC_HOST ?? "http://localhost:3000";
 
-export const metadata = {
+export const metadata: Metadata = {
   openGraph: {
     title: "GertsDev | Kirill Gertsik's Portfolio",
     description:
