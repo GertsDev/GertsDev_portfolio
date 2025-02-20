@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: `${host}`,
     images: [
       {
-        url: `${host}/.jpg`,
+        url: `${host}/OG-PREVIEW.jpg`,
         width: 1200,
         height: 630,
         alt: "Preview of GertsDev Portfolio",
