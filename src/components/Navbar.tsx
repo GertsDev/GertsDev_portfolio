@@ -143,13 +143,13 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                href="/project"
+                href="/projects"
                 className={`block rounded px-3 py-2 md:p-0 ${
-                  isActive("/project")
+                  isActive("/projects")
                     ? "bg-blue-500 text-white md:bg-transparent md:text-blue-500"
                     : "text-white hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500"
                 }`}
-                aria-current={isActive("/project") ? "page" : undefined}
+                aria-current={isActive("/projects") ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
               >
                 Projects
@@ -166,12 +166,12 @@ const Navbar = () => {
                 aria-current={isActive("/blog") ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
               >
-                Blogs
+                Blog
               </Link>
             </li>
             <li>
               <Link
-                href="/contact"
+                href="/contacts"
                 className={`block rounded px-3 py-2 md:p-0 ${
                   isActive("/contact")
                     ? "bg-blue-500 text-white md:bg-transparent md:text-blue-500"
@@ -180,7 +180,7 @@ const Navbar = () => {
                 aria-current={isActive("/contact") ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
               >
-                Contact
+                Contacts
               </Link>
             </li>
           </ul>
