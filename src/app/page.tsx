@@ -1,7 +1,7 @@
-"use client";
-import Link from "next/link";
-import Typewriter from "~/components/Typewriter";
-import Image from "next/image";
+'use client';
+import Link from 'next/link';
+import Typewriter from '~/components/Typewriter';
+import Image from 'next/image';
 
 export default function HomePage() {
   return (
@@ -14,13 +14,8 @@ export default function HomePage() {
       */}
       <div className="grid w-full max-w-screen-xl grid-cols-1 items-center gap-8 md:grid-cols-2">
         {/* Image Section */}
-        <div className="relative h-[40rem] w-full px-4">
-          <Image
-            src="/subject-2.png"
-            alt="profile"
-            fill
-            className="-scale-x-100 object-contain"
-          />
+        <div className="relative h-[25rem] w-full px-4 md:h-[40rem]">
+          <Image src="/subject-2.png" alt="profile" fill className="-scale-x-100 object-contain" />
         </div>
 
         {/* Text Section */}
@@ -28,21 +23,14 @@ export default function HomePage() {
           <h1 className="mb-4 max-w-2xl text-center text-2xl leading-none font-extrabold tracking-tight text-white md:text-left md:text-3xl xl:text-4xl">
             Hey there! <span className="animate-waving-hand">👋</span>
             <br />
-            I&apos;m a{" "}
-            <Typewriter
-              texts={[
-                "Frontend Developer",
-                "UI/UX Innovator",
-                "Tech Enthusiast",
-              ]}
-            />
+            I&apos;m a{' '}
+            <Typewriter texts={['Frontend Developer', 'UI/UX Innovator', 'Tech Enthusiast']} />
           </h1>
 
           <p className="mb-6 max-w-2xl text-center font-light text-gray-400 md:text-left md:text-lg lg:mb-8 lg:text-xl">
-            I build sleek, responsive web interfaces that help businesses crush
-            it. I turn complex challenges into clean, elegant digital solutions.
-            If you need someone who gets things done and isn&apos;t afraid to
-            dive into the nitty-gritty, let&apos;s chat.
+            I build sleek, responsive web interfaces that help businesses crush it. I turn complex
+            challenges into clean, elegant digital solutions. If you need someone who gets things
+            done and isn&apos;t afraid to dive into the nitty-gritty, let&apos;s chat.
           </p>
 
           <div className="flex space-x-3">
@@ -51,11 +39,7 @@ export default function HomePage() {
               className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 text-base font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-900"
             >
               Hire Me
-              <svg
-                className="-mr-1 ml-2 h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
+              <svg className="-mr-1 ml-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
                   d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
