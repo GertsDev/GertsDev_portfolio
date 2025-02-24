@@ -1,0 +1,19 @@
+---
+description: To write the best Next.js code possible with Tailwind CSS and shadcn/ui
+globs: 
+---
+
+# Your rule content
+Prioritize clean, modular, and reusable code that leverages Next.js conventions, Tailwind’s utility-first approach, and shadcn/ui’s component system while keeping performance and maintainability in mind. Here’s how to break it down:
+
+Structure with Next.js Best Practices: Use the app directory for routing when possible, keep pages and components organized, and lean into server components for data fetching unless client-side interactivity is needed. For example, fetch data in a server component and pass it to client components via props.
+Maximize Tailwind’s Efficiency: Write concise, readable utility classes in your JSX, avoiding duplication by extracting repeated styles into custom classes in the tailwind.config.js file. Keep the design responsive with mobile-first breakpoints like sm:, md:, and lg:.
+Integrate shadcn/ui Seamlessly: Use shadcn/ui components as the foundation for UI elements—think buttons, forms, and modals—and customize them sparingly with Tailwind classes. Install them via their CLI, import them directly, and tweak props or styles only when necessary to match the app’s design.
+Keep Components Reusable: Break UI into small, focused components in a components/ folder. Pass props to make them flexible, and use TypeScript to type props for safety and clarity.
+Optimize for Performance: Minimize client-side JavaScript by offloading work to Next.js server-side rendering or static generation. Use Tailwind’s JIT mode to purge unused styles, and lazy-load shadcn/ui components if they’re heavy.
+Maintain Readability: Format code consistently (e.g., with Prettier), use meaningful variable names, and comment complex logic. Keep Tailwind class lists short and logical—group related styles like spacing (m-, p-) or typography (text-, font-).
+
+
+
+- You can @ files here
+- You can use markdown but dont have to

@@ -112,14 +112,14 @@ const Navbar = () => {
           }`}
           id="navbar-sticky"
         >
-          <ul className="mt-4 flex flex-col rounded-lg border border-gray-700 bg-gray-800 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-gray-900">
+          <ul className="mt-4 flex flex-col rounded-lg p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:p-0">
             <li>
               <Link
                 href="/"
                 className={`block rounded px-3 py-2 md:p-0 ${
                   isActive("/")
-                    ? "bg-blue-500 text-white md:bg-transparent md:text-blue-500"
-                    : "text-white hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500"
+                    ? "text-blue-500"
+                    : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
                 }`}
                 aria-current={isActive("/") ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
@@ -132,8 +132,8 @@ const Navbar = () => {
                 href="/about"
                 className={`block rounded px-3 py-2 md:p-0 ${
                   isActive("/about")
-                    ? "bg-blue-500 text-white md:bg-transparent md:text-blue-500"
-                    : "text-white hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500"
+                    ? "text-blue-500"
+                    : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
                 }`}
                 aria-current={isActive("/about") ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
@@ -146,8 +146,8 @@ const Navbar = () => {
                 href="/projects"
                 className={`block rounded px-3 py-2 md:p-0 ${
                   isActive("/projects")
-                    ? "bg-blue-500 text-white md:bg-transparent md:text-blue-500"
-                    : "text-white hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500"
+                    ? "text-blue-500"
+                    : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
                 }`}
                 aria-current={isActive("/projects") ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
@@ -160,8 +160,8 @@ const Navbar = () => {
                 href="/blog"
                 className={`block rounded px-3 py-2 md:p-0 ${
                   isActive("/blog")
-                    ? "bg-blue-500 text-white md:bg-transparent md:text-blue-500"
-                    : "text-white hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500"
+                    ? "text-blue-500"
+                    : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
                 }`}
                 aria-current={isActive("/blog") ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
@@ -173,11 +173,11 @@ const Navbar = () => {
               <Link
                 href="/contacts"
                 className={`block rounded px-3 py-2 md:p-0 ${
-                  isActive("/contact")
-                    ? "bg-blue-500 text-white md:bg-transparent md:text-blue-500"
-                    : "text-white hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500"
+                  isActive("/contacts")
+                    ? "text-blue-500"
+                    : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
                 }`}
-                aria-current={isActive("/contact") ? "page" : undefined}
+                aria-current={isActive("/contacts") ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
               >
                 Contacts

@@ -1,5 +1,6 @@
 // components/Typewriter.tsx
-import { useEffect, useState } from "react";
+"use client";
+import { useState, useEffect } from "react";
 
 interface TypewriterProps {
   texts: string[];
@@ -22,7 +23,7 @@ const Typewriter: React.FC<TypewriterProps> = ({
     if (texts.length === 0) return;
 
     let timeout: NodeJS.Timeout;
-    const currentText = texts[textIndex] ?? '';
+    const currentText = texts[textIndex] ?? "";
 
     if (!isDeleting && displayText.length < currentText.length) {
       timeout = setTimeout(() => {
@@ -52,9 +53,7 @@ const Typewriter: React.FC<TypewriterProps> = ({
     delayBetweenTexts,
   ]);
 
-  return (
-    <span className="text-blue-500">{displayText}</span>
-  );
+  return <span className="text-blue-500">{displayText}</span>;
 };
 
 export default Typewriter;
