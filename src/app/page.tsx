@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function HomePage() {
   return (
     // Outer wrapper that centers content & adds vertical padding
-    <section className="flex w-full flex-col items-center justify-center px-4 py-16 md:py-24">
+    <section className="flex w-full flex-col items-center justify-center px-4 py-23 md:py-24">
       {/*
         A responsive grid:
         - 1 column on mobile
@@ -15,7 +15,14 @@ export default function HomePage() {
       <div className="grid w-full max-w-screen-xl grid-cols-1 items-center gap-8 md:grid-cols-2">
         {/* Image Section */}
         <div className="relative h-[25rem] w-full px-4 md:h-[40rem]">
-          <Image src="/subject-2.png" alt="profile" fill className="-scale-x-100 object-contain" />
+          <Image
+            src="/subject-2.png"
+            alt="profile"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="-scale-x-100 object-contain p-3"
+          />
         </div>
 
         {/* Text Section */}
