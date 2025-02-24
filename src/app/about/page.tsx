@@ -22,12 +22,8 @@ export default function About() {
                 height={128}
                 className="mb-8 rounded-full border-4 border-white/20 object-cover shadow-2xl"
               />
-              <h1 className="mb-4 text-5xl font-bold tracking-tight">
-                Kirill Gertsik
-              </h1>
-              <p className="mb-6 text-2xl font-light text-gray-200">
-                Frontend Developer in NYC
-              </p>
+              <h1 className="mb-4 text-5xl font-bold tracking-tight">Kirill Gertsik</h1>
+              <p className="mb-6 text-2xl font-light text-gray-200">Frontend Developer in NYC</p>
               <div className="flex gap-4">
                 <a
                   href="https://github.com/yourusername"
@@ -67,17 +63,13 @@ export default function About() {
           <div className="rounded-2xl bg-gray-800 p-6 text-center shadow-xl">
             <i className="fas fa-brain mb-4 text-3xl text-blue-500"></i>
             <h3 className="text-2xl font-bold text-white">AI Enthusiast</h3>
-            <p className="text-gray-400">
-              AI Implementations in real world projects
-            </p>
+            <p className="text-gray-400">AI Implementations in real world projects</p>
           </div>
         </section>
 
         {/* Technical Skills */}
         <section className="mb-24">
-          <h2 className="mb-12 text-center text-3xl font-bold text-white">
-            Technical Arsenal
-          </h2>
+          <h2 className="mb-12 text-center text-3xl font-bold text-white">Technical Arsenal</h2>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {[
               { name: "React", level: "95%" },
@@ -89,10 +81,7 @@ export default function About() {
               { name: "Redux", level: "80%" },
               { name: "AWS", level: "75%" },
             ].map((skill) => (
-              <div
-                key={skill.name}
-                className="rounded-lg bg-gray-800 p-4 shadow-lg"
-              >
+              <div key={skill.name} className="rounded-lg bg-gray-800 p-4 shadow-lg">
                 <div className="mb-2 flex justify-between">
                   <span className="font-semibold text-white">{skill.name}</span>
                   <span className="text-blue-500">{skill.level}</span>
@@ -110,18 +99,14 @@ export default function About() {
 
         {/* Featured Projects */}
         <section className="mb-24">
-          <h2 className="mb-12 text-center text-3xl font-bold text-white">
-            Featured Work
-          </h2>
+          <h2 className="mb-12 text-center text-3xl font-bold text-white">Featured Work</h2>
           <div className="grid gap-8 md:grid-cols-2">
             <div className="group relative overflow-hidden rounded-xl bg-gray-800 shadow-xl">
               <div className="p-6">
-                <h3 className="mb-2 text-xl font-bold text-white">
-                  AI-Powered Chat Platform
-                </h3>
+                <h3 className="mb-2 text-xl font-bold text-white">AI-Powered Chat Platform</h3>
                 <p className="text-gray-400">
-                  Built a real-time chat platform with AI integration using
-                  React, Node.js, and OpenAI.
+                  Built a real-time chat platform with AI integration using React, Node.js, and
+                  OpenAI.
                 </p>
                 <div className="mt-4 flex gap-2">
                   <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800">
@@ -143,9 +128,9 @@ export default function About() {
         <section className="from-darkBlue-600 rounded-3xl bg-gradient-to-r to-blue-900 p-12 text-center text-white">
           <h2 className="mb-6 text-3xl font-bold">Looking to Hire in NYC?</h2>
           <p className="mb-8 text-lg">
-            Based in New York City and ready to join a forward-thinking team.
-            Bringing expertise in modern frontend development, AI integration,
-            and a track record of delivering exceptional user experiences.
+            Based in New York City and ready to join a forward-thinking team. Bringing expertise in
+            modern frontend development, AI integration, and a track record of delivering
+            exceptional user experiences.
           </p>
           <div className="flex flex-col items-center gap-4 md:flex-row md:justify-center">
             <a

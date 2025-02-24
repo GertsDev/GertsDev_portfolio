@@ -16,9 +16,7 @@ const Custom404 = () => {
       <div className="flex min-h-screen flex-col bg-gray-900">
         <div className="flex flex-grow flex-col items-center justify-center py-20 text-center">
           <h1 className="text-9xl font-extrabold text-blue-500">404</h1>
-          <p className="mt-4 text-2xl font-semibold text-white">
-            Page Not Found
-          </p>
+          <p className="mt-4 text-2xl font-semibold text-white">Page Not Found</p>
           <p className="mt-2 text-lg text-gray-400">
             {`Sorry, the page you're looking for doesn't exist.`}
           </p>

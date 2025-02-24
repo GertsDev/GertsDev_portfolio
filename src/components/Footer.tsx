@@ -1,11 +1,5 @@
 import Link from "next/link";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaInstagram,
-  FaTelegram,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaTelegram } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -18,7 +12,7 @@ const Footer = () => {
           aria-label="GitHub"
           className="group"
         >
-        <FaGithub className="h-6 w-6 text-white group-hover:text-gray-300" />
+          <FaGithub className="h-6 w-6 text-white group-hover:text-gray-300" />
         </Link>
         <Link
           href="https://linkedin.com/in/GertsDev"
@@ -27,7 +21,7 @@ const Footer = () => {
           aria-label="LinkedIn"
           className="group"
         >
-        <FaLinkedin className="h-6 w-6 text-white group-hover:text-gray-300" />
+          <FaLinkedin className="h-6 w-6 text-white group-hover:text-gray-300" />
         </Link>
         <Link
           href="mailto:hello@gerts.dev"
@@ -37,9 +31,7 @@ const Footer = () => {
           className="group flex items-center space-x-1 font-medium text-white transition-colors duration-200"
         >
           <FaEnvelope className="h-5 w-5 group-hover:text-gray-300" />
-          <span className="text-sm group-hover:text-gray-300">
-            hello@gerts.dev
-          </span>
+          <span className="text-sm group-hover:text-gray-300">hello@gerts.dev</span>
         </Link>
         <Link
           href="https://www.instagram.com/gerts_official"
@@ -47,7 +39,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           aria-label="Instagram"
           className="group"
-          >
+        >
           <FaInstagram className="h-6 w-6 text-white group-hover:text-gray-300" />
         </Link>
         <Link
@@ -56,8 +48,8 @@ const Footer = () => {
           rel="noopener noreferrer"
           aria-label="Telegram"
           className="group"
-          >
-        <FaTelegram className="h-6 w-6 text-white group-hover:text-gray-300" />
+        >
+          <FaTelegram className="h-6 w-6 text-white group-hover:text-gray-300" />
         </Link>
       </div>
     </footer>

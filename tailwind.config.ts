@@ -12,8 +12,7 @@ module.exports = {
         textSecondary: "#CBD5E1",
       },
       backgroundImage: {
-        "hero-gradient":
-          "linear-gradient(to top right, #0A192F 0%, #112240 50%, #0A192F 100%)",
+        "hero-gradient": "linear-gradient(to top right, #0A192F 0%, #112240 50%, #0A192F 100%)",
       },
     },
   },

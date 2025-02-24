@@ -1,7 +1,7 @@
-'use client';
-import Link from 'next/link';
-import Typewriter from '~/components/Typewriter';
-import Image from 'next/image';
+"use client";
+import Link from "next/link";
+import Typewriter from "~/components/Typewriter";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
@@ -30,8 +30,8 @@ export default function HomePage() {
           <h1 className="mb-4 max-w-2xl text-center text-2xl leading-none font-extrabold tracking-tight text-white md:text-left md:text-3xl xl:text-4xl">
             Hey there! <span className="animate-waving-hand">👋</span>
             <br />
-            I&apos;m a{' '}
-            <Typewriter texts={['Frontend Developer', 'UI/UX Innovator', 'Tech Enthusiast']} />
+            I&apos;m a{" "}
+            <Typewriter texts={["Frontend Developer", "UI/UX Innovator", "Tech Enthusiast"]} />
           </h1>
 
           <p className="mb-6 max-w-2xl text-center font-light text-gray-400 md:text-left md:text-lg lg:mb-8 lg:text-xl">

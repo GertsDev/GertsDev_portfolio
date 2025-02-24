@@ -48,23 +48,15 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 z-20 w-full border-b border-gray-600 bg-gray-900 transition-transform duration-300 ${
         // If on /about, apply the hide/show logic. Else, always show.
-        isAbout
-          ? showNav
-            ? "translate-y-0"
-            : "-translate-y-full"
-          : "translate-y-0"
+        isAbout ? (showNav ? "translate-y-0" : "-translate-y-full") : "translate-y-0"
       } md:translate-y-0`}
     >
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
         {/* Brand / Logo */}
         <Link href="/" className="flex items-center space-x-3">
-          <span
-            className={`self-center text-3xl ${sortsMillGoudy.className} text-white`}
-          >
+          <span className={`self-center text-3xl ${sortsMillGoudy.className} text-white`}>
             Gerts
-            <span className={`${sortsMillGoudy.className} text-blue-500`}>
-              Dev
-            </span>
+            <span className={`${sortsMillGoudy.className} text-blue-500`}>Dev</span>
           </span>
         </Link>
 

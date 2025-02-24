@@ -43,15 +43,7 @@ const Typewriter: React.FC<TypewriterProps> = ({
     }
 
     return () => clearTimeout(timeout);
-  }, [
-    displayText,
-    isDeleting,
-    texts,
-    textIndex,
-    typingSpeed,
-    deletingSpeed,
-    delayBetweenTexts,
-  ]);
+  }, [displayText, isDeleting, texts, textIndex, typingSpeed, deletingSpeed, delayBetweenTexts]);
 
   return <span className="text-blue-500">{displayText}</span>;
 };

@@ -1,10 +1,10 @@
-'use client';
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+"use client";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 function TypewriterText({ texts }: { texts: string[] }) {
   const [mounted, setMounted] = useState(false);
-  const [displayText, setDisplayText] = useState(texts[0] ?? '');
+  const [displayText, setDisplayText] = useState(texts[0] ?? "");
 
   useEffect(() => {
     setMounted(true);
@@ -22,7 +22,7 @@ function TypewriterText({ texts }: { texts: string[] }) {
       if (!currentText) return;
 
       if (currentCharIndex <= currentText.length) {
-        setDisplayText(currentText.substring(0, currentCharIndex) + '█');
+        setDisplayText(currentText.substring(0, currentCharIndex) + "█");
         currentCharIndex++;
         timeout = setTimeout(typeNextCharacter, 100);
       } else {
@@ -64,7 +64,7 @@ export default function UnderDevelopment() {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center"
           >
             {/* Heading */}
@@ -100,11 +100,11 @@ export default function UnderDevelopment() {
               <div className="h-10 font-mono text-lg text-emerald-400">
                 <TypewriterText
                   texts={[
-                    'npm install @portfolio/next-gen',
-                    'loading creative modules...',
-                    'brewing artisanal coffee ☕',
-                    'optimizing user experiences...',
-                    'ETA: Any moment now ✨',
+                    "npm install @portfolio/next-gen",
+                    "loading creative modules...",
+                    "brewing artisanal coffee ☕",
+                    "optimizing user experiences...",
+                    "ETA: Any moment now ✨",
                   ]}
                 />
               </div>

@@ -1,19 +1,19 @@
-import '~/styles/globals.css';
+import "~/styles/globals.css";
 
-import { GeistSans } from 'geist/font/sans';
-import { type Metadata } from 'next';
-import Navbar from '~/components/Navbar';
-import Footer from '~/components/Footer';
+import { GeistSans } from "geist/font/sans";
+import { type Metadata } from "next";
+import Navbar from "~/components/Navbar";
+import Footer from "~/components/Footer";
 
-const host = process.env.NEXT_PUBLIC_HOST ?? 'http://localhost:3000';
+const host = process.env.NEXT_PUBLIC_HOST ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   title: "GertsDev | Kirill Gertsik's Portfolio",
   description: "Showcasing Kirill Gertsik's best web development projects, skills, and experience.",
   metadataBase: new URL(host),
-  authors: [{ name: 'Kirill Gertsik' }],
-  keywords: ['web development', 'frontend', 'portfolio', 'react', 'next.js'],
-  robots: 'index, follow',
+  authors: [{ name: "Kirill Gertsik" }],
+  keywords: ["web development", "frontend", "portfolio", "react", "next.js"],
+  robots: "index, follow",
   openGraph: {
     title: "GertsDev | Kirill Gertsik's Portfolio",
     description:
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
         url: `${host}/og-preview.jpg`,
         width: 1200,
         height: 630,
-        alt: 'Preview of GertsDev Portfolio',
+        alt: "Preview of GertsDev Portfolio",
       },
     ],
-    type: 'website',
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: "GertsDev | Kirill Gertsik's Portfolio",
     description:
       "Showcasing Kirill Gertsik's best web development projects, skills, and experience.",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 1,
 };
