@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build",
+    "build": "node scripts/fix-types.js && next build",
     "check": "next lint && tsc --noEmit",
     "dev": "next dev --turbo",
     "lint": "next lint",
@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "mkdir -p types && node scripts/fix-types.js"
   },
   "dependencies": {
     "@radix-ui/react-tooltip": "^1.0.7",

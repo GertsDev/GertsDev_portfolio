@@ -1,4 +1,5 @@
-// eslint.config.mjs
+// eslint.config.js
+// @ts-check
 import nextPlugin from "@next/eslint-plugin-next";
 import tsEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
