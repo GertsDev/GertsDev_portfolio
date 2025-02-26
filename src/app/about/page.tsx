@@ -5,12 +5,9 @@ import { motion } from "framer-motion";
 import { FiDownload, FiMail, FiGithub, FiLinkedin } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { Particles } from "~/components/ui/particles";
-import { useTheme } from "next-themes";
 
 export default function About() {
-  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const isDark = theme === "dark";
 
   useEffect(() => {
     setMounted(true);
@@ -64,12 +61,7 @@ export default function About() {
     <div className="relative min-h-screen w-full">
       {/* Particle background */}
       {mounted && (
-        <Particles
-          className="absolute inset-0 -z-10"
-          quantity={100}
-          color={isDark ? "#60a5fa" : "#3b82f6"}
-          speed={0.2}
-        />
+        <Particles className="absolute inset-0 -z-10" quantity={100} color="#60a5fa" speed={0.2} />
       )}
 
       <motion.div

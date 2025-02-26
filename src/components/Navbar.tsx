@@ -4,25 +4,17 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { sortsMillGoudy } from "~/lib/fonts";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
-import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNav, setShowNav] = useState(true);
-  const [mounted, setMounted] = useState(false);
   const lastScrollY = useRef(0);
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
 
   const pathname = usePathname();
   const isAbout = pathname === "/about";
 
   const isActive = (href: string) => pathname === href;
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     if (!isAbout) {
@@ -49,10 +41,6 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isAbout]);
-
-  const toggleTheme = () => {
-    setTheme(isDark ? "light" : "dark");
-  };
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -85,20 +73,8 @@ const Navbar = () => {
             </motion.span>
           </Link>
 
-          {/* Right side: Theme Toggle + Resume + Mobile Menu Button */}
+          {/* Right side: Resume + Mobile Menu Button */}
           <div className="flex items-center space-x-3 md:order-2">
-            {mounted && (
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={toggleTheme}
-                className="rounded-full p-2 text-gray-300 hover:bg-gray-800/50"
-                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-              >
-                {isDark ? <FiSun className="h-5 w-5" /> : <FiMoon className="h-5 w-5" />}
-              </motion.button>
-            )}
-
             <motion.a
               href="/GertsDev_CV.pdf"
               download

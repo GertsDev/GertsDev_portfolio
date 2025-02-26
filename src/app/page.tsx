@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FiArrowRight, FiGithub } from "react-icons/fi";
-import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 
@@ -14,8 +13,6 @@ const Typewriter = dynamic(() => import("~/components/Typewriter"), {
 });
 
 export default function HomePage() {
-  const { theme } = useTheme();
-  console.log("🚀 ~ HomePage ~ theme:", theme);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

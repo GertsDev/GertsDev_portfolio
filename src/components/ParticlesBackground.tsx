@@ -1,6 +1,5 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 
@@ -10,9 +9,7 @@ const Particles = dynamic(() => import("~/components/ui/particles").then((mod) =
 });
 
 export default function ParticlesBackground() {
-  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const isDark = mounted ? theme === "dark" : true; // Default to true during SSR for dark theme stars
 
   useEffect(() => {
     setMounted(true);
@@ -24,7 +21,7 @@ export default function ParticlesBackground() {
     <Particles
       className="absolute inset-0 -z-10"
       quantity={100}
-      color={isDark ? "#60a5fa" : "#3b82f6"}
+      color="#60a5fa" // Always use the dark theme color
       speed={0.2}
       staticity={50}
       ease={50}

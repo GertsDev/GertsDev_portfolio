@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
-import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { Particles } from "./ui/particles";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
@@ -176,9 +175,7 @@ function CommandSuggestion({
 }
 
 function UnderDevelopment() {
-  const { theme } = useTheme();
   const [selectedCommand, setSelectedCommand] = useState<string | null>(null);
-  const isDark = theme === "dark";
 
   const commands = [
     {
@@ -219,12 +216,7 @@ function UnderDevelopment() {
   return (
     <div className="relative flex h-full min-h-[100dvh] w-full items-center justify-center overflow-hidden p-4">
       {/* Particle background */}
-      <Particles
-        className="absolute inset-0 -z-10"
-        quantity={100}
-        color={isDark ? "#60a5fa" : "#3b82f6"}
-        speed={0.2}
-      />
+      <Particles className="absolute inset-0 -z-10" quantity={100} color="#60a5fa" speed={0.2} />
 
       {/* Animated gradient background */}
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-black"></div>
