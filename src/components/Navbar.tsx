@@ -3,19 +3,28 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { sortsMillGoudy } from "~/lib/fonts";
+import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "next-themes";
+import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNav, setShowNav] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const lastScrollY = useRef(0);
+  const { theme, setTheme } = useTheme();
+  const isDark = theme === "dark";
 
   const pathname = usePathname();
-  const isAbout = pathname === "/about"; // <-- check if we're on the /about page
+  const isAbout = pathname === "/about";
 
   const isActive = (href: string) => pathname === href;
 
   useEffect(() => {
-    // If we're not on /about, skip the scroll logic
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (!isAbout) {
       setShowNav(true);
       return;
@@ -24,12 +33,9 @@ const Navbar = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Keep the nav shown if near the top
       if (currentScrollY < 10) {
         setShowNav(true);
-      }
-      // Hide if scrolling down, show if scrolling up
-      else if (currentScrollY > lastScrollY.current) {
+      } else if (currentScrollY > lastScrollY.current) {
         setShowNav(false);
       } else {
         setShowNav(true);
@@ -44,141 +50,128 @@ const Navbar = () => {
     };
   }, [isAbout]);
 
+  const toggleTheme = () => {
+    setTheme(isDark ? "light" : "dark");
+  };
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/projects", label: "Projects" },
+    { href: "/blog", label: "Blog" },
+    { href: "/contacts", label: "Contacts" },
+  ];
+
   return (
-    <nav
-      className={`fixed top-0 z-20 w-full border-b border-gray-600 bg-gray-900 transition-transform duration-300 ${
-        // If on /about, apply the hide/show logic. Else, always show.
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className={`fixed top-0 z-20 w-full transition-transform duration-300 ${
         isAbout ? (showNav ? "translate-y-0" : "-translate-y-full") : "translate-y-0"
       } md:translate-y-0`}
     >
-      <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-        {/* Brand / Logo */}
-        <Link href="/" className="flex items-center space-x-3">
-          <span className={`self-center text-3xl ${sortsMillGoudy.className} text-white`}>
-            Gerts
-            <span className={`${sortsMillGoudy.className} text-blue-500`}>Dev</span>
-          </span>
-        </Link>
-
-        {/* Right side: Resume + Mobile Menu Button */}
-        <div className="flex space-x-3 md:order-2">
-          <a
-            href="/GertsDev_CV.pdf"
-            download
-            target="_blank"
-            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-800 focus:outline-none"
-          >
-            Download Resume
-          </a>
-          {/* Hide burger button on md+ screens */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-400 hover:bg-gray-700 focus:ring-2 focus:ring-gray-600 focus:outline-none md:hidden"
-            aria-controls="navbar-sticky"
-            aria-expanded={menuOpen}
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="h-5 w-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
+      <div className="glass-card-dark border-b border-gray-800/50 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
+          {/* Brand / Logo */}
+          <Link href="/" className="flex items-center space-x-3">
+            <motion.span
+              className={`self-center text-3xl ${sortsMillGoudy.className} text-gradient-subtle`}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
-        </div>
+              Gerts
+              <span className={`${sortsMillGoudy.className} text-gradient-vibrant`}>Dev</span>
+            </motion.span>
+          </Link>
 
-        {/* Navigation Links */}
-        <div
-          className={`w-full items-center justify-between md:order-1 md:flex md:w-auto ${
-            menuOpen ? "" : "hidden"
-          }`}
-          id="navbar-sticky"
-        >
-          <ul className="mt-4 flex flex-col rounded-lg p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:p-0">
-            <li>
-              <Link
-                href="/"
-                className={`block rounded px-3 py-2 md:p-0 ${
-                  isActive("/")
-                    ? "text-blue-500"
-                    : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
-                }`}
-                aria-current={isActive("/") ? "page" : undefined}
-                onClick={() => setMenuOpen(false)}
+          {/* Right side: Theme Toggle + Resume + Mobile Menu Button */}
+          <div className="flex items-center space-x-3 md:order-2">
+            {mounted && (
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={toggleTheme}
+                className="rounded-full p-2 text-gray-300 hover:bg-gray-800/50"
+                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
               >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/about"
-                className={`block rounded px-3 py-2 md:p-0 ${
-                  isActive("/about")
-                    ? "text-blue-500"
-                    : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
-                }`}
-                aria-current={isActive("/about") ? "page" : undefined}
-                onClick={() => setMenuOpen(false)}
+                {isDark ? <FiSun className="h-5 w-5" /> : <FiMoon className="h-5 w-5" />}
+              </motion.button>
+            )}
+
+            <motion.a
+              href="/GertsDev_CV.pdf"
+              download
+              target="_blank"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 focus:ring-4 focus:ring-blue-800 focus:outline-none"
+            >
+              Download Resume
+            </motion.a>
+
+            {/* Hide burger button on md+ screens */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setMenuOpen(!menuOpen)}
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-400 hover:bg-gray-700 focus:ring-2 focus:ring-gray-600 focus:outline-none md:hidden"
+              aria-controls="navbar-sticky"
+              aria-expanded={menuOpen}
+            >
+              <span className="sr-only">Open main menu</span>
+              {menuOpen ? <FiX className="h-5 w-5" /> : <FiMenu className="h-5 w-5" />}
+            </motion.button>
+          </div>
+
+          {/* Navigation Links */}
+          <AnimatePresence>
+            <div
+              className={`w-full items-center justify-between md:order-1 md:flex md:w-auto ${
+                menuOpen ? "" : "hidden"
+              }`}
+              id="navbar-sticky"
+            >
+              <motion.ul
+                className="mt-4 flex flex-col rounded-lg p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:p-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
               >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/projects"
-                className={`block rounded px-3 py-2 md:p-0 ${
-                  isActive("/projects")
-                    ? "text-blue-500"
-                    : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
-                }`}
-                aria-current={isActive("/projects") ? "page" : undefined}
-                onClick={() => setMenuOpen(false)}
-              >
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/blog"
-                className={`block rounded px-3 py-2 md:p-0 ${
-                  isActive("/blog")
-                    ? "text-blue-500"
-                    : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
-                }`}
-                aria-current={isActive("/blog") ? "page" : undefined}
-                onClick={() => setMenuOpen(false)}
-              >
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contacts"
-                className={`block rounded px-3 py-2 md:p-0 ${
-                  isActive("/contacts")
-                    ? "text-blue-500"
-                    : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
-                }`}
-                aria-current={isActive("/contacts") ? "page" : undefined}
-                onClick={() => setMenuOpen(false)}
-              >
-                Contacts
-              </Link>
-            </li>
-          </ul>
+                {navLinks.map((link) => (
+                  <motion.li
+                    key={link.href}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Link
+                      href={link.href}
+                      className={`relative block rounded px-3 py-2 transition-colors duration-200 md:p-0 ${
+                        isActive(link.href)
+                          ? "text-blue-500"
+                          : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
+                      }`}
+                      aria-current={isActive(link.href) ? "page" : undefined}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.label}
+                      {isActive(link.href) && (
+                        <motion.span
+                          className="absolute bottom-0 left-0 h-0.5 w-full bg-blue-500 md:block hidden"
+                          layoutId="navbar-indicator"
+                          transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                        />
+                      )}
+                    </Link>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </div>
+          </AnimatePresence>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

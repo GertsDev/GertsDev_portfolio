@@ -1,6 +1,8 @@
 // tailwind.config.js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
+
+const config: Config = {
   darkMode: "class",
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -13,8 +15,58 @@ module.exports = {
       },
       backgroundImage: {
         "hero-gradient": "linear-gradient(to top right, #0A192F 0%, #112240 50%, #0A192F 100%)",
+        "grid-white":
+          "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
+      },
+      borderRadius: {
+        "4xl": "2rem",
+      },
+      animation: {
+        "spin-slow": "spin 15s linear infinite",
+        glitch: "glitch 3s ease-in-out infinite",
+        "text-shimmer": "text-shimmer 2.5s ease-in-out infinite",
+      },
+      keyframes: {
+        glitch: {
+          "0%, 100%": { transform: "translate(0)" },
+          "20%": { transform: "translate(-2px, 2px)" },
+          "40%": { transform: "translate(-2px, -2px)" },
+          "60%": { transform: "translate(2px, 2px)" },
+          "80%": { transform: "translate(2px, -2px)" },
+        },
+        "text-shimmer": {
+          from: { backgroundPosition: "0 0" },
+          to: { backgroundPosition: "-200% 0" },
+        },
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "65ch",
+            color: "inherit",
+            a: {
+              color: "inherit",
+              opacity: 0.8,
+              "&:hover": {
+                opacity: 1,
+              },
+              textDecoration: "underline",
+              textUnderlineOffset: "2px",
+            },
+            b: { color: "inherit" },
+            strong: { color: "inherit" },
+            em: { color: "inherit" },
+            h1: { color: "inherit" },
+            h2: { color: "inherit" },
+            h3: { color: "inherit" },
+            h4: { color: "inherit" },
+            code: { color: "inherit" },
+          },
+        },
       },
     },
   },
-  plugins: [],
+  plugins: [tailwindcssAnimate],
 };
+
+export default config;
