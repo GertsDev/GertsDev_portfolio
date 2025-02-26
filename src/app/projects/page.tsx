@@ -101,7 +101,7 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="relative min-h-screen w-full mt-7 md:mt-0">
       {/* Particle background */}
       {mounted && (
         <Particles

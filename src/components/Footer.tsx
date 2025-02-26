@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaTelegram } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaTelegram } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 
 const socialLinks = [
@@ -26,12 +26,6 @@ const socialLinks = [
     hoverColor: "group-hover:text-emerald-400",
   },
   {
-    href: "https://www.instagram.com/gerts_official",
-    icon: FaInstagram,
-    label: "Instagram",
-    hoverColor: "group-hover:text-pink-400",
-  },
-  {
     href: "https://t.me/Gerts_official",
     icon: FaTelegram,
     label: "Telegram",
@@ -48,7 +42,7 @@ const quickLinks = [
 
 const Footer = () => {
   return (
-    <footer className="relative w-full border-t border-gray-800/50 bg-black/30 backdrop-blur-md">
+    <footer className="relative w-full border-t border-gray-800/50 bg-black/30 backdrop-blur-md min-h-[100dvh] md:min-h-0">
       {/* Gradient line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
 

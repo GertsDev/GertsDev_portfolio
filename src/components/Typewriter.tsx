@@ -1,6 +1,6 @@
 // components/Typewriter.tsx
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface TypewriterProps {
@@ -20,20 +20,34 @@ const Typewriter = ({
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [isBlinking, setIsBlinking] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const randomRef = useRef<() => number>(() => 0);
+
+  // Only run on client-side
+  useEffect(() => {
+    setMounted(true);
+    // Set up the random function only on client side
+    randomRef.current = () => Math.random();
+
+    // Initialize with empty text to start the typing animation
+    if (texts && texts.length > 0) {
+      setCurrentText("");
+    }
+  }, [texts]);
 
   useEffect(() => {
-    if (!texts || texts.length === 0) return;
+    if (!mounted || !texts || texts.length === 0) return;
 
     let timeout: NodeJS.Timeout;
     const safeIndex = currentTextIndex % texts.length;
     const currentFullText = texts[safeIndex] || "";
 
-    // Variable speed for more natural typing
+    // Variable speed for more natural typing - only use random on client side
     const speed = isDeleting
       ? deletingSpeed
       : currentText.length === currentFullText.length
         ? delayBetweenTexts
-        : typingSpeed + Math.random() * 50;
+        : typingSpeed + (mounted ? randomRef.current() * 50 : 0);
 
     if (isDeleting) {
       // Deleting text
@@ -67,6 +81,7 @@ const Typewriter = ({
 
     return () => clearTimeout(timeout);
   }, [
+    mounted,
     currentText,
     currentTextIndex,
     isDeleting,
@@ -76,6 +91,11 @@ const Typewriter = ({
     delayBetweenTexts,
     isBlinking,
   ]);
+
+  // For server-side rendering, return a static placeholder
+  if (typeof window === "undefined" || !mounted) {
+    return <span>{texts[0] || ""}</span>;
+  }
 
   return (
     <span className="inline-flex">

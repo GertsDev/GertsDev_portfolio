@@ -2,10 +2,13 @@ import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-import Navbar from "~/components/Navbar";
-import Footer from "~/components/Footer";
 import { ThemeProvider } from "~/components/ThemeProvider";
 import { spaceGrotesk, inter, syne } from "~/lib/fonts";
+import dynamic from "next/dynamic";
+
+// Dynamically import components that might cause hydration issues
+const Navbar = dynamic(() => import("~/components/Navbar"), { ssr: true });
+const Footer = dynamic(() => import("~/components/Footer"), { ssr: true });
 
 const host = process.env.NEXT_PUBLIC_HOST ?? "http://localhost:3000";
 
@@ -62,7 +65,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-black"></div>
           <div className="fixed inset-0 -z-10 bg-grid-white"></div>
           <Navbar />
-          <main className="flex flex-grow flex-col items-center justify-center">{children}</main>
+          <main className="flex flex-grow flex-col items-center justify-center w-full">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

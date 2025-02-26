@@ -4,15 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { Particles } from "~/components/ui/particles";
-import {
-  FiMail,
-  FiMapPin,
-  FiSend,
-  FiGithub,
-  FiLinkedin,
-  FiInstagram,
-  FiMessageCircle,
-} from "react-icons/fi";
+import { FiMail, FiMapPin, FiSend, FiGithub, FiLinkedin, FiMessageCircle } from "react-icons/fi";
 
 export default function ContactsPage() {
   const { theme } = useTheme();
@@ -69,7 +61,7 @@ export default function ContactsPage() {
   };
 
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="relative w-full mt-7">
       {/* Particle background */}
       {mounted && (
         <Particles
@@ -176,16 +168,6 @@ export default function ContactsPage() {
                   className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
                 >
                   <FiLinkedin className="h-5 w-5" />
-                </motion.a>
-                <motion.a
-                  href="https://instagram.com/gerts_official"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
-                >
-                  <FiInstagram className="h-5 w-5" />
                 </motion.a>
               </div>
             </motion.div>

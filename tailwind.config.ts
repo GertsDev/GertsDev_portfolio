@@ -25,6 +25,7 @@ const config: Config = {
         "spin-slow": "spin 15s linear infinite",
         glitch: "glitch 3s ease-in-out infinite",
         "text-shimmer": "text-shimmer 2.5s ease-in-out infinite",
+        "waving-hand": "wave 2.5s linear infinite",
       },
       keyframes: {
         glitch: {
@@ -37,6 +38,16 @@ const config: Config = {
         "text-shimmer": {
           from: { backgroundPosition: "0 0" },
           to: { backgroundPosition: "-200% 0" },
+        },
+        wave: {
+          "0%": { transform: "rotate(0.0deg)" },
+          "10%": { transform: "rotate(14.0deg)" },
+          "20%": { transform: "rotate(-8.0deg)" },
+          "30%": { transform: "rotate(14.0deg)" },
+          "40%": { transform: "rotate(-4.0deg)" },
+          "50%": { transform: "rotate(10.0deg)" },
+          "60%": { transform: "rotate(0.0deg)" },
+          "100%": { transform: "rotate(0.0deg)" },
         },
       },
       typography: {

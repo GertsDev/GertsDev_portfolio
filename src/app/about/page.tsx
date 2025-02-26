@@ -79,7 +79,7 @@ export default function About() {
         className="container mx-auto max-w-5xl px-4 py-16 sm:px-6 md:py-24"
       >
         {/* Hero Section */}
-        <section className="mb-20 md:mb-32">
+        <section className="mb-2 md:mb-2 ">
           <div className="glass-card-dark relative overflow-hidden rounded-3xl">
             <div className="flex flex-col items-center justify-center px-4 py-16 md:px-8 md:py-24">
               <motion.div
@@ -178,7 +178,7 @@ export default function About() {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-white">5+ Years</h3>
+            <h3 className="text-2xl font-bold text-white">3+ Years</h3>
             <p className="text-gray-400">Frontend Experience</p>
           </motion.div>
 

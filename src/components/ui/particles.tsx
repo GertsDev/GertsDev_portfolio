@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 interface ParticlesProps {
   className?: string;
@@ -45,9 +45,15 @@ export const Particles = ({
   const circles = useRef<Circle[]>([]);
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasSize = useRef<CanvasSize>({ w: 0, h: 0 });
+  const [mounted, setMounted] = useState(false);
+  const randomRef = useRef<() => number>(() => 0);
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
   useEffect(() => {
+    setMounted(true);
+    // Set up the random function only on client side
+    randomRef.current = () => Math.random();
+
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d");
     }
@@ -63,25 +69,28 @@ export const Particles = ({
   }, []);
 
   useEffect(() => {
-    initCanvas();
-  }, [refresh]);
+    if (mounted) {
+      initCanvas();
+    }
+  }, [refresh, mounted]);
 
   const initCanvas = () => {
+    if (!mounted) return;
     resizeCanvas();
     drawParticles();
   };
 
   const onMouseMove = (event: MouseEvent) => {
-    if (canvasContainerRef.current) {
-      const rect = canvasContainerRef.current.getBoundingClientRect();
-      const { w, h } = canvasSize.current;
-      const x = event.clientX - rect.left - w / 2;
-      const y = event.clientY - rect.top - h / 2;
-      const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2;
-      if (inside) {
-        mouse.current.x = x;
-        mouse.current.y = y;
-      }
+    if (!mounted || !canvasContainerRef.current) return;
+
+    const rect = canvasContainerRef.current.getBoundingClientRect();
+    const { w, h } = canvasSize.current;
+    const x = event.clientX - rect.left - w / 2;
+    const y = event.clientY - rect.top - h / 2;
+    const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2;
+    if (inside) {
+      mouse.current.x = x;
+      mouse.current.y = y;
     }
   };
 
@@ -99,16 +108,18 @@ export const Particles = ({
   };
 
   const circleParams = (): Circle => {
-    const x = Math.floor(Math.random() * canvasSize.current.w);
-    const y = Math.floor(Math.random() * canvasSize.current.h);
+    // Use the randomRef to ensure no random values during SSR
+    const random = randomRef.current;
+    const x = Math.floor(random() * canvasSize.current.w);
+    const y = Math.floor(random() * canvasSize.current.h);
     const translateX = 0;
     const translateY = 0;
-    const size = Math.floor(Math.random() * 2) + 1;
+    const size = Math.floor(random() * 2) + 1;
     const alpha = 0;
-    const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
-    const dx = (Math.random() - 0.5) * 0.2 * speed;
-    const dy = (Math.random() - 0.5) * 0.2 * speed;
-    const magnetism = 0.1 + Math.random() * 4;
+    const targetAlpha = parseFloat((random() * 0.6 + 0.1).toFixed(1));
+    const dx = (random() - 0.5) * 0.2 * speed;
+    const dy = (random() - 0.5) * 0.2 * speed;
+    const magnetism = 0.1 + random() * 4;
     return {
       x,
       y,
@@ -223,7 +234,7 @@ export const Particles = ({
 
   return (
     <div className={className} ref={canvasContainerRef} aria-hidden="true">
-      <canvas ref={canvasRef} />
+      {mounted && <canvas ref={canvasRef} />}
     </div>
   );
 };

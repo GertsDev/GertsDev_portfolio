@@ -1,17 +1,26 @@
 "use client";
 import Link from "next/link";
-import Typewriter from "~/components/Typewriter";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FiArrowRight, FiGithub } from "react-icons/fi";
-import { Particles } from "~/components/ui/particles";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+
+// Dynamically import components that might cause hydration issues
+const Typewriter = dynamic(() => import("~/components/Typewriter"), {
+  ssr: false,
+  loading: () => <span>Frontend Developer</span>,
+});
+
+const Particles = dynamic(() => import("~/components/ui/particles").then((mod) => mod.Particles), {
+  ssr: false,
+});
 
 export default function HomePage() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const isDark = theme === "dark";
+  const isDark = mounted ? theme === "dark" : false; // Default to false during SSR
 
   useEffect(() => {
     setMounted(true);
@@ -32,9 +41,35 @@ export default function HomePage() {
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
+  // Return a simple loading state or nothing before client-side hydration
+  if (!mounted) {
+    return (
+      <section className="relative flex min-h-screen w-full flex-col items-center justify-center px-4 py-16 md:py-24">
+        <div className="grid w-full max-w-screen-xl grid-cols-1 items-center gap-12 md:grid-cols-2">
+          <div className="flex flex-col items-center md:items-start">
+            <div className="mb-4 md: inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-sm text-blue-400">
+              <span className="mr-1 inline-block h-2 w-2 rounded-full bg-blue-400"></span>
+              Available for hire
+            </div>
+            <h1 className="mb-6 max-w-2xl text-center text-4xl font-extrabold tracking-tight md:text-left md:text-5xl xl:text-6xl">
+              <span className="block">Hey there!</span>
+              <span className="mt-2 block text-gradient-vibrant whitespace-nowrap">
+                I&apos;m a Frontend Developer
+              </span>
+            </h1>
+            <p className="mb-8 max-w-2xl text-center font-light text-gray-300 md:text-left md:text-lg lg:mb-10 lg:text-xl">
+              I build sleek, responsive web interfaces that help businesses crush it. I turn complex
+              challenges into clean, elegant digital solutions.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="relative flex min-h-100vh w-full flex-col items-center justify-center px-4 py-16 md:py-24">
-      {/* Particle background */}
+    <section className="relative flex min-h-screen w-full flex-col items-center justify-center px-4 py-16 md:py-24">
+      {/* Particle background - only render on client */}
       {mounted && (
         <Particles
           className="absolute inset-0 -z-10"
@@ -46,6 +81,7 @@ export default function HomePage() {
 
       {/* Content container */}
       <motion.div
+        key="main-content"
         variants={container}
         initial="hidden"
         animate="show"
@@ -57,17 +93,17 @@ export default function HomePage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="mb-4 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
+            className="mb-4 hidden md:inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-sm text-blue-400"
           >
             <span className="mr-1 inline-block h-2 w-2 rounded-full bg-blue-400"></span>
             Available for hire
           </motion.div>
 
-          <h1 className="mb-6 max-w-2xl text-center text-4xl font-extrabold tracking-tight md:text-left md:text-5xl xl:text-6xl">
+          <h1 className="mb-6 mt-10 md:mt-0 max-w-2xl text-center text-4xl font-extrabold tracking-tight md:text-left md:text-5xl xl:text-6xl">
             <span className="block">
-              Hey there! <span className="animate-waving-hand">👋</span>
+              Hey there! <span className="animate-waving-hand inline-block">👋</span>
             </span>
-            <span className="mt-2 block text-gradient-vibrant">
+            <span className="mt-2 block text-gradient-vibrant whitespace-nowrap">
               I&apos;m a{" "}
               <Typewriter texts={["Frontend Developer", "UI/UX Innovator", "Tech Enthusiast"]} />
             </span>
@@ -164,7 +200,7 @@ export default function HomePage() {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             >
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-white">5+ years experience</span>
+                <span className="text-sm font-medium text-white">3+ years experience</span>
               </div>
             </motion.div>
           </motion.div>
