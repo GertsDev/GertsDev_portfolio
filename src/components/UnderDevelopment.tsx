@@ -214,7 +214,7 @@ function UnderDevelopment() {
   ];
 
   return (
-    <div className="relative flex h-full min-h-[100dvh] w-full items-center justify-center overflow-hidden p-4">
+    <div className="relative flex mt-7 md:mt-0 min-h-[100dvh] w-full items-center justify-center overflow-hidden p-4">
       {/* Particle background */}
       <Particles className="absolute inset-0 -z-10" quantity={100} color="#60a5fa" speed={0.2} />
 
@@ -242,7 +242,7 @@ function UnderDevelopment() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-center"
+              className="text-center "
             >
               {/* Heading with 3D effect */}
               <GlitchText text="Coming in 2025" />
