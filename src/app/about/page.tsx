@@ -1,156 +1,348 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { FiDownload, FiMail, FiGithub, FiLinkedin } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import { Particles } from "~/components/ui/particles";
+import { useTheme } from "next-themes";
 
 export default function About() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const isDark = theme === "dark";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const skills = [
+    { name: "React", level: "95%", color: "from-blue-500 to-cyan-400" },
+    { name: "Next.js", level: "90%", color: "from-gray-800 to-gray-600" },
+    { name: "TypeScript", level: "85%", color: "from-blue-600 to-blue-400" },
+    { name: "Node.js", level: "80%", color: "from-green-600 to-green-400" },
+    { name: "GraphQL", level: "85%", color: "from-pink-600 to-pink-400" },
+    { name: "Tailwind", level: "90%", color: "from-cyan-600 to-cyan-400" },
+    { name: "Redux", level: "80%", color: "from-purple-600 to-purple-400" },
+    { name: "AWS", level: "75%", color: "from-yellow-600 to-yellow-400" },
+  ];
+
+  const projects = [
+    {
+      title: "AI-Powered Chat Platform",
+      description:
+        "Built a real-time chat platform with AI integration using React, Node.js, and OpenAI.",
+      tags: ["React", "Node.js", "OpenAI"],
+      image: "/project-1.jpg",
+    },
+    {
+      title: "E-commerce Dashboard",
+      description:
+        "Developed a comprehensive analytics dashboard for e-commerce businesses with real-time data visualization.",
+      tags: ["Next.js", "TypeScript", "Chart.js"],
+      image: "/project-2.jpg",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
-      <section className="container mx-auto max-w-5xl px-6 py-12">
-        {/* Hero Section - NYC Theme */}
-        <section className="relative mb-24 overflow-hidden rounded-3xl">
-          <div className="relative h-[60vh] w-full">
-            <Image
-              src="/gertsdev_about-hero.png"
-              alt="NYC Skyline"
-              fill
-              className="object-cover brightness-30"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-              <Image
-                src="/about-avatar.png"
-                alt="Kirill Gertsik"
-                width={128}
-                height={128}
-                className="mb-8 rounded-full border-4 border-white/20 object-cover shadow-2xl"
-              />
-              <h1 className="mb-4 text-5xl font-bold tracking-tight">Kirill Gertsik</h1>
-              <p className="mb-6 text-2xl font-light text-gray-200">Frontend Developer in NYC</p>
-              <div className="flex gap-4">
-                <a
-                  href="https://github.com/yourusername"
-                  className="rounded-full bg-white/10 p-4 backdrop-blur-sm transition-all hover:bg-white/20"
+    <div className="relative min-h-screen w-full">
+      {/* Particle background */}
+      {mounted && (
+        <Particles
+          className="absolute inset-0 -z-10"
+          quantity={100}
+          color={isDark ? "#60a5fa" : "#3b82f6"}
+          speed={0.2}
+        />
+      )}
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="container mx-auto max-w-5xl px-4 py-16 sm:px-6 md:py-24"
+      >
+        {/* Hero Section */}
+        <section className="mb-2 md:mb-2 ">
+          <div className="glass-card-dark relative overflow-hidden rounded-3xl">
+            <div className="flex flex-col items-center justify-center px-4 py-16 md:px-8 md:py-24">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                className="relative mb-8"
+              >
+                <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 opacity-75 blur"></div>
+                <Image
+                  src="/about-avatar.png"
+                  alt="Kirill Gertsik"
+                  width={150}
+                  height={150}
+                  className="relative rounded-full border-2 border-white/20 object-cover"
+                />
+              </motion.div>
+
+              <motion.h1
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className="mb-4 text-center text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl"
+              >
+                Kirill Gertsik
+              </motion.h1>
+
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className="mb-8 text-center text-xl font-light text-gray-300 md:text-2xl"
+              >
+                Frontend Developer in NYC
+              </motion.p>
+
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="flex flex-wrap justify-center gap-4"
+              >
+                <motion.a
+                  href="https://github.com/GertsDev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm transition-all hover:bg-white/20"
                 >
-                  <i className="fab fa-github text-2xl"></i>
-                </a>
-                <a
-                  href="https://linkedin.com/in/yourusername"
-                  className="rounded-full bg-white/10 p-4 backdrop-blur-sm transition-all hover:bg-white/20"
+                  <FiGithub className="h-5 w-5 text-white" />
+                </motion.a>
+                <motion.a
+                  href="https://linkedin.com/in/GertsDev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm transition-all hover:bg-white/20"
                 >
-                  <i className="fab fa-linkedin text-2xl"></i>
-                </a>
-                <a
+                  <FiLinkedin className="h-5 w-5 text-white" />
+                </motion.a>
+                <motion.a
                   href="mailto:hello@gerts.dev"
-                  className="rounded-full bg-white/10 p-4 backdrop-blur-sm transition-all hover:bg-white/20"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm transition-all hover:bg-white/20"
                 >
-                  <i className="fas fa-envelope text-2xl"></i>
-                </a>
-              </div>
+                  <FiMail className="h-5 w-5 text-white" />
+                </motion.a>
+              </motion.div>
             </div>
           </div>
         </section>
 
         {/* Quick Stats */}
-        <section className="mb-24 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <div className="rounded-2xl bg-gray-800 p-6 text-center shadow-xl">
-            <i className="fas fa-code mb-4 text-3xl text-blue-500"></i>
+        <motion.section
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="mb-20 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 md:mb-32"
+        >
+          <motion.div variants={item} className="glass-card rounded-2xl p-6 text-center">
+            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-500/20 mx-auto">
+              <svg
+                className="h-8 w-8 text-blue-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+            </div>
             <h3 className="text-2xl font-bold text-white">3+ Years</h3>
             <p className="text-gray-400">Frontend Experience</p>
-          </div>
-          <div className="rounded-2xl bg-gray-800 p-6 text-center shadow-xl">
-            <i className="fas fa-project-diagram mb-4 text-3xl text-blue-500"></i>
+          </motion.div>
+
+          <motion.div variants={item} className="glass-card rounded-2xl p-6 text-center">
+            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-500/20 mx-auto">
+              <svg
+                className="h-8 w-8 text-purple-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                />
+              </svg>
+            </div>
             <h3 className="text-2xl font-bold text-white">50+ Projects</h3>
             <p className="text-gray-400">Completed</p>
-          </div>
-          <div className="rounded-2xl bg-gray-800 p-6 text-center shadow-xl">
-            <i className="fas fa-brain mb-4 text-3xl text-blue-500"></i>
+          </motion.div>
+
+          <motion.div
+            variants={item}
+            className="glass-card rounded-2xl p-6 text-center sm:col-span-2 md:col-span-1"
+          >
+            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-cyan-500/20 mx-auto">
+              <svg
+                className="h-8 w-8 text-cyan-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
+            </div>
             <h3 className="text-2xl font-bold text-white">AI Enthusiast</h3>
             <p className="text-gray-400">AI Implementations in real world projects</p>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
         {/* Technical Skills */}
-        <section className="mb-24">
-          <h2 className="mb-12 text-center text-3xl font-bold text-white">Technical Arsenal</h2>
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-            {[
-              { name: "React", level: "95%" },
-              { name: "Next.js", level: "90%" },
-              { name: "TypeScript", level: "85%" },
-              { name: "Node.js", level: "80%" },
-              { name: "GraphQL", level: "85%" },
-              { name: "Tailwind", level: "90%" },
-              { name: "Redux", level: "80%" },
-              { name: "AWS", level: "75%" },
-            ].map((skill) => (
-              <div key={skill.name} className="rounded-lg bg-gray-800 p-4 shadow-lg">
-                <div className="mb-2 flex justify-between">
-                  <span className="font-semibold text-white">{skill.name}</span>
-                  <span className="text-blue-500">{skill.level}</span>
+        <section className="mb-20 md:mb-32">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center text-3xl font-bold text-white"
+          >
+            Technical Arsenal
+          </motion.h2>
+
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {skills.map((skill, index) => (
+              <motion.div key={skill.name} variants={item} className="glass-card rounded-xl p-5">
+                <div className="mb-3 flex justify-between">
+                  <span className="font-medium text-white">{skill.name}</span>
+                  <span className="text-blue-400">{skill.level}</span>
                 </div>
-                <div className="h-2 rounded-full bg-gray-700">
-                  <div
-                    className="h-2 rounded-full bg-blue-500"
-                    style={{ width: skill.level }}
-                  ></div>
+                <div className="h-2 overflow-hidden rounded-full bg-gray-700/50">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: skill.level }}
+                    transition={{ duration: 1, delay: 0.2 + index * 0.1 }}
+                    className={`h-full rounded-full bg-gradient-to-r ${skill.color}`}
+                  ></motion.div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         {/* Featured Projects */}
-        <section className="mb-24">
-          <h2 className="mb-12 text-center text-3xl font-bold text-white">Featured Work</h2>
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="group relative overflow-hidden rounded-xl bg-gray-800 shadow-xl">
-              <div className="p-6">
-                <h3 className="mb-2 text-xl font-bold text-white">AI-Powered Chat Platform</h3>
-                <p className="text-gray-400">
-                  Built a real-time chat platform with AI integration using React, Node.js, and
-                  OpenAI.
-                </p>
-                <div className="mt-4 flex gap-2">
-                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800">
-                    React
-                  </span>
-                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800">
-                    Node.js
-                  </span>
-                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-800">
-                    OpenAI
-                  </span>
+        <section className="mb-20 md:mb-32">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center text-3xl font-bold text-white"
+          >
+            Featured Work
+          </motion.h2>
+
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="grid gap-8 md:grid-cols-2"
+          >
+            {projects.map((project) => (
+              <motion.div
+                key={project.title}
+                variants={item}
+                whileHover={{ y: -10 }}
+                className="glass-card group relative overflow-hidden rounded-xl"
+              >
+                <div className="p-6">
+                  <h3 className="mb-2 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="mb-4 text-gray-400">{project.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-blue-500/20 px-3 py-1 text-sm font-medium text-blue-400"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </section>
 
-        {/* NYC-Focused CTA */}
-        <section className="from-darkBlue-600 rounded-3xl bg-gradient-to-r to-blue-900 p-12 text-center text-white">
-          <h2 className="mb-6 text-3xl font-bold">Looking to Hire in NYC?</h2>
-          <p className="mb-8 text-lg">
+        {/* CTA Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="glass-card rounded-3xl p-8 text-center md:p-12"
+        >
+          <h2 className="mb-6 text-3xl font-bold text-white">Looking to Hire in NYC?</h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-300">
             Based in New York City and ready to join a forward-thinking team. Bringing expertise in
             modern frontend development, AI integration, and a track record of delivering
             exceptional user experiences.
           </p>
-          <div className="flex flex-col items-center gap-4 md:flex-row md:justify-center">
-            <a
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <motion.a
               href="mailto:hello@gerts.dev"
-              className="inline-flex items-center rounded-full bg-white px-8 py-4 font-semibold text-blue-600 transition-transform hover:scale-105"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 text-base font-medium text-white shadow-lg shadow-blue-500/20 sm:w-auto"
             >
-              <i className="fas fa-paper-plane mr-2"></i>
+              <FiMail className="mr-2 h-5 w-5" />
               Contact Me
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="/GertsDev_CV.pdf"
               download
-              className="inline-flex items-center rounded-full border-2 border-white px-8 py-4 font-semibold text-white transition-transform hover:scale-105"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex w-full items-center justify-center rounded-lg border border-gray-700 bg-gray-800/50 px-6 py-3 text-base font-medium text-white backdrop-blur-sm sm:w-auto"
             >
-              <i className="fas fa-file-alt mr-2"></i>
+              <FiDownload className="mr-2 h-5 w-5" />
               Download Resume
-            </a>
+            </motion.a>
           </div>
-        </section>
-      </section>
+        </motion.section>
+      </motion.div>
     </div>
   );
 }

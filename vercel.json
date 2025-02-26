@@ -1,0 +1,5 @@
+{
+  "buildCommand": "node scripts/fix-types.js && next build",
+  "installCommand": "pnpm install",
+  "framework": "nextjs"
+}
