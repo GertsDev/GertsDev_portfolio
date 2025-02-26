@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 // Dynamically import components that might cause hydration issues
 const Navbar = dynamic(() => import("~/components/Navbar"), { ssr: true });
 const Footer = dynamic(() => import("~/components/Footer"), { ssr: true });
+const ClientParticlesWrapper = dynamic(() => import("~/components/ClientParticlesWrapper"));
 
 const host = process.env.NEXT_PUBLIC_HOST ?? "http://localhost:3000";
 
@@ -63,7 +64,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="flex min-h-screen flex-col bg-background text-foreground antialiased">
         <ThemeProvider>
           <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-black"></div>
-          <div className="fixed inset-0 -z-10 bg-grid-white"></div>
+          <div className="fixed inset-0 -z-10 bg-grid-white/[0.02] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_70%)]"></div>
+          <ClientParticlesWrapper />
           <Navbar />
           <main className="flex flex-grow flex-col items-center justify-center w-full">
             {children}
