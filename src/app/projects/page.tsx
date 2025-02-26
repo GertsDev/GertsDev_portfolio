@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
 import { Particles } from "~/components/ui/particles";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,9 +19,7 @@ interface Project {
 }
 
 export default function ProjectsPage() {
-  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const isDark = theme === "dark";
   const [filter, setFilter] = useState<string>("all");
 
   useEffect(() => {
@@ -104,12 +101,7 @@ export default function ProjectsPage() {
     <div className="relative min-h-screen w-full mt-7 md:mt-0">
       {/* Particle background */}
       {mounted && (
-        <Particles
-          className="absolute inset-0 -z-10"
-          quantity={100}
-          color={isDark ? "#60a5fa" : "#3b82f6"}
-          speed={0.2}
-        />
+        <Particles className="absolute inset-0 -z-10" quantity={100} color="#60a5fa" speed={0.2} />
       )}
 
       <motion.div

@@ -12,11 +12,26 @@ const config: Config = {
         accent: "#3B82F6",
         textLight: "#F1F5F9",
         textSecondary: "#CBD5E1",
+        light: {
+          background: "#FFFFFF",
+          foreground: "#1E293B",
+          accent: "#3B82F6",
+          muted: "#F1F5F9",
+        },
+        dark: {
+          background: "#0A192F",
+          foreground: "#F1F5F9",
+          accent: "#60A5FA",
+          muted: "#334155",
+        },
       },
       backgroundImage: {
         "hero-gradient": "linear-gradient(to top right, #0A192F 0%, #112240 50%, #0A192F 100%)",
         "grid-white":
           "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
+        "grid-dark":
+          "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(0 0 0 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
+        "light-gradient": "linear-gradient(to top right, #F9FAFB 0%, #F3F4F6 50%, #F9FAFB 100%)",
       },
       borderRadius: {
         "4xl": "2rem",

@@ -2,14 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
-import { Particles } from "~/components/ui/particles";
 import { FiMail, FiMapPin, FiSend, FiGithub, FiLinkedin, FiMessageCircle } from "react-icons/fi";
+import { Particles } from "~/components/ui/particles";
 
 export default function ContactsPage() {
-  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const isDark = theme === "dark";
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -64,12 +61,7 @@ export default function ContactsPage() {
     <div className="relative w-full mt-7">
       {/* Particle background */}
       {mounted && (
-        <Particles
-          className="absolute inset-0 -z-10"
-          quantity={100}
-          color={isDark ? "#60a5fa" : "#3b82f6"}
-          speed={0.2}
-        />
+        <Particles className="absolute inset-0 -z-10" quantity={100} color="#60a5fa" speed={0.2} />
       )}
 
       <motion.div

@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FiArrowRight, FiGithub } from "react-icons/fi";
-import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 
@@ -13,14 +12,8 @@ const Typewriter = dynamic(() => import("~/components/Typewriter"), {
   loading: () => <span>Frontend Developer</span>,
 });
 
-const Particles = dynamic(() => import("~/components/ui/particles").then((mod) => mod.Particles), {
-  ssr: false,
-});
-
 export default function HomePage() {
-  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const isDark = mounted ? theme === "dark" : false; // Default to false during SSR
 
   useEffect(() => {
     setMounted(true);
@@ -69,16 +62,6 @@ export default function HomePage() {
 
   return (
     <section className="relative flex min-h-screen w-full flex-col items-center justify-center px-4 py-16 md:py-24">
-      {/* Particle background - only render on client */}
-      {mounted && (
-        <Particles
-          className="absolute inset-0 -z-10"
-          quantity={100}
-          color={isDark ? "#60a5fa" : "#3b82f6"}
-          speed={0.2}
-        />
-      )}
-
       {/* Content container */}
       <motion.div
         key="main-content"
