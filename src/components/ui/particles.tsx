@@ -236,9 +236,9 @@ function hexToRGB(hex: string): number[] {
 
   // 3 digits
   if (hex.length === 4) {
-    r = parseInt(hex[1] + hex[1], 16);
-    g = parseInt(hex[2] + hex[2], 16);
-    b = parseInt(hex[3] + hex[3], 16);
+    r = parseInt(hex.charAt(1) + hex.charAt(1), 16);
+    g = parseInt(hex.charAt(2) + hex.charAt(2), 16);
+    b = parseInt(hex.charAt(3) + hex.charAt(3), 16);
   }
   // 6 digits
   else if (hex.length === 7) {
