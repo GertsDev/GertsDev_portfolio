@@ -52,7 +52,7 @@ export default function HomePage() {
       opacity: 1,
       filter: "blur(0px)",
       transition: {
-        duration: 1.2,
+        duration: 1.5,
         ease: [0.22, 1, 0.36, 1], // Custom cubic bezier for smooth animation
       },
     },
@@ -142,11 +142,23 @@ export default function HomePage() {
               </motion.span>{" "}
               <motion.div className="relative inline-block">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-lg blur-md opacity-70 animate-pulse-slow"></div>
-                <Typewriter
-                  texts={["Frontend Developer", "UI/UX Innovator", "Tech Enthusiast"]}
-                  className="relative inline-block text-blue-400 md:text-inherit glow-text"
-                  cursorClassName="md:bg-current bg-blue-400"
-                />
+                <motion.div initial={{ opacity: 1 }} animate={{ opacity: 1 }} className="relative">
+                  <Typewriter
+                    texts={["Frontend Developer", "UI/UX Innovator", "Tech Enthusiast"]}
+                    className="relative inline-block text-blue-400 md:text-inherit glow-text"
+                    cursorClassName="bg-blue-400 md:bg-white/80"
+                    transitionConfig={{
+                      entering: {
+                        opacity: [0, 1],
+                        transition: { duration: 0.8, ease: "easeOut" },
+                      },
+                      exiting: {
+                        opacity: [1, 0],
+                        transition: { duration: 0.8, ease: "easeIn" },
+                      },
+                    }}
+                  />
+                </motion.div>
               </motion.div>
             </motion.span>
           </h1>
