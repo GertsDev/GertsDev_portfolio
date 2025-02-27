@@ -62,6 +62,23 @@ export default function HomePage() {
 
   return (
     <section className="relative flex min-h-screen w-full flex-col items-center justify-center px-4 py-16 md:py-24">
+      {/* Mobile Avatar (visible only on mobile) */}
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="relative mb-8 block md:hidden"
+      >
+        <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 opacity-75 blur"></div>
+        <Image
+          src="/about-avatar.png"
+          alt="Kirill Gertsik"
+          width={150}
+          height={150}
+          className="relative rounded-full border-2 border-white/20 object-cover"
+        />
+      </motion.div>
+
       {/* Content container */}
       <motion.div
         key="main-content"
@@ -142,12 +159,16 @@ export default function HomePage() {
         </motion.div>
 
         {/* Image Section */}
-        <motion.div variants={item} className="relative h-[25rem] w-full px-4 md:h-[40rem]">
+        <motion.div
+          variants={item}
+          className="relative w-full px-4 flex items-center justify-center"
+        >
+          {/* Desktop Image (hidden on mobile) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative h-full w-full"
+            className="relative w-full aspect-[3/4] md:aspect-[2/3] max-h-[90vh] hidden md:block"
           >
             {/* Decorative elements */}
             <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full bg-blue-500/10 blur-xl"></div>
@@ -155,14 +176,18 @@ export default function HomePage() {
 
             {/* Image with glass effect frame */}
             <div className="glass-card-dark relative h-full w-full overflow-hidden rounded-2xl p-2">
-              <Image
-                src="/subject-2.png"
-                alt="profile"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="-scale-x-100 object-contain p-3"
-              />
+              <div className="relative h-full w-full">
+                <Image
+                  src="/coolDude.png"
+                  alt="profile"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="-scale-x-100 object-contain object-center"
+                  style={{ objectPosition: "center bottom" }}
+                />
+                <div className="absolute bottom-0 left-1/4 h-16 rounded-2xl w-1/2 bg-gradient-to-t from-purple-500/10 to-transparent"></div>
+              </div>
             </div>
 
             {/* Floating badges */}
