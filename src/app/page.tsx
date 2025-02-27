@@ -34,6 +34,30 @@ export default function HomePage() {
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
+  // Define new animation variants for the glowing text effect
+  const glowTextContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const glowTextItem = {
+    hidden: { opacity: 0, filter: "blur(8px)" },
+    show: {
+      opacity: 1,
+      filter: "blur(0px)",
+      transition: {
+        duration: 1.2,
+        ease: [0.22, 1, 0.36, 1], // Custom cubic bezier for smooth animation
+      },
+    },
+  };
+
   // Return a simple loading state or nothing before client-side hydration
   if (!mounted) {
     return (
@@ -46,8 +70,8 @@ export default function HomePage() {
             </div>
             <h1 className="mb-6 max-w-2xl text-center text-4xl font-extrabold tracking-tight md:text-left md:text-5xl xl:text-6xl">
               <span className="block">Hey there!</span>
-              <span className="mt-2 block text-gradient-vibrant whitespace-nowrap">
-                I&apos;m a <span className="text-blue-400">Frontend Developer</span>
+              <span className="mt-2 block text-gradient-vibrant">
+                I&apos;m a <span className="text-blue-400 inline-block">Frontend Developer</span>
               </span>
             </h1>
             <p className="mb-8 max-w-2xl text-center font-light text-gray-300 md:text-left md:text-lg lg:mb-10 lg:text-xl">
@@ -103,14 +127,28 @@ export default function HomePage() {
             <span className="block">
               Hey there! <span className="animate-waving-hand inline-block">👋</span>
             </span>
-            <span className="mt-2 block text-gradient-vibrant">
-              I&apos;m a{" "}
-              <Typewriter
-                texts={["Frontend Developer", "UI/UX Innovator", "Tech Enthusiast"]}
-                className="md:text-inherit text-blue-400"
-                cursorClassName="md:bg-current bg-blue-400"
-              />
-            </span>
+            <motion.span
+              className="mt-2 block relative glow-text-container"
+              variants={glowTextContainer}
+              initial="hidden"
+              animate="show"
+            >
+              <span className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 via-purple-600/30 to-blue-600/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></span>
+              <motion.span variants={glowTextItem} className="relative inline-block glow-text">
+                I&apos;m
+              </motion.span>{" "}
+              <motion.span variants={glowTextItem} className="relative inline-block glow-text">
+                a
+              </motion.span>{" "}
+              <motion.div className="relative inline-block">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-lg blur-md opacity-70 animate-pulse-slow"></div>
+                <Typewriter
+                  texts={["Frontend Developer", "UI/UX Innovator", "Tech Enthusiast"]}
+                  className="relative inline-block text-blue-400 md:text-inherit glow-text"
+                  cursorClassName="md:bg-current bg-blue-400"
+                />
+              </motion.div>
+            </motion.span>
           </h1>
 
           <motion.p
@@ -150,7 +188,7 @@ export default function HomePage() {
           </motion.div>
 
           {/* Tech stack badges */}
-          <motion.div variants={item} className="mt-10 flex flex-wrap gap-2">
+          <motion.div variants={item} className="mt-10 hidden md:flex md:flex-wrap md:gap-2">
             {["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"].map((tech) => (
               <span
                 key={tech}
@@ -197,8 +235,34 @@ export default function HomePage() {
                 ease: "easeInOut",
               }}
             >
-              {/* Subtle glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 blur-xl opacity-40 rounded-2xl"></div>
+              {/* Enhanced glow effect */}
+              <motion.div
+                className="absolute -inset-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 blur-xl rounded-2xl"
+                animate={{
+                  opacity: [0.3, 0.5, 0.3],
+                  scale: [1, 1.02, 1],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              ></motion.div>
+
+              {/* Additional subtle pulsing glow */}
+              <motion.div
+                className="absolute -inset-4 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-blue-600/10 blur-2xl rounded-3xl"
+                animate={{
+                  opacity: [0.1, 0.2, 0.1],
+                  scale: [0.98, 1, 0.98],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+              ></motion.div>
 
               <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-purple-900/10 mix-blend-overlay"></div>
 
