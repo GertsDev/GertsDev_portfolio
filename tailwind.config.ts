@@ -41,6 +41,7 @@ const config: Config = {
         glitch: "glitch 3s ease-in-out infinite",
         "text-shimmer": "text-shimmer 2.5s ease-in-out infinite",
         "waving-hand": "wave 2.5s linear infinite",
+        "pulse-slow": "pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
       keyframes: {
         glitch: {
@@ -63,6 +64,10 @@ const config: Config = {
           "50%": { transform: "rotate(10.0deg)" },
           "60%": { transform: "rotate(0.0deg)" },
           "100%": { transform: "rotate(0.0deg)" },
+        },
+        "pulse-slow": {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.7" },
         },
       },
       typography: {
