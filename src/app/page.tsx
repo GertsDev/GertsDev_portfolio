@@ -150,7 +150,7 @@ export default function HomePage() {
           </motion.div>
 
           {/* Tech stack badges */}
-          <motion.div variants={item} className="mt-10 flex flex-wrap gap-2">
+          <motion.div variants={item} className="mt-10 hidden md:flex md:flex-wrap md:gap-2">
             {["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"].map((tech) => (
               <span
                 key={tech}
