@@ -1,125 +1,100 @@
 // components/Typewriter.tsx
 "use client";
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence, TargetAndTransition } from "framer-motion";
 
 interface TypewriterProps {
   texts: string[];
-  typingSpeed?: number;
-  deletingSpeed?: number;
-  delayBetweenTexts?: number;
   className?: string;
   cursorClassName?: string;
+  transitionConfig?: {
+    entering: TargetAndTransition;
+    exiting: TargetAndTransition;
+  };
 }
 
-const Typewriter = ({
-  texts = [],
-  typingSpeed = 100,
-  deletingSpeed = 50,
-  delayBetweenTexts = 1500,
+export default function Typewriter({
+  texts,
   className = "",
   cursorClassName = "",
-}: TypewriterProps) => {
+  transitionConfig = {
+    entering: { opacity: [0, 1], transition: { duration: 0.5 } },
+    exiting: { opacity: [1, 0], transition: { duration: 0.5 } },
+  },
+}: TypewriterProps) {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [currentText, setCurrentText] = useState("");
+  const [displayText, setDisplayText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isBlinking, setIsBlinking] = useState(true);
-  const [mounted, setMounted] = useState(false);
-  const randomRef = useRef<() => number>(() => 0);
+  const [key, setKey] = useState(0);
+  const [cursorVisible, setCursorVisible] = useState(true);
 
-  // Only run on client-side
+  // Handle cursor blinking
   useEffect(() => {
-    setMounted(true);
-    // Set up the random function only on client side
-    randomRef.current = () => Math.random();
+    const blinkInterval = setInterval(() => {
+      setCursorVisible((prev) => !prev);
+    }, 530);
 
-    // Initialize with empty text to start the typing animation
-    if (texts && texts.length > 0) {
-      setCurrentText("");
-    }
-  }, [texts]);
+    return () => clearInterval(blinkInterval);
+  }, []);
 
   useEffect(() => {
-    if (!mounted || !texts || texts.length === 0) return;
+    const currentText = texts[currentTextIndex] || "";
 
-    let timeout: NodeJS.Timeout;
-    const safeIndex = currentTextIndex % texts.length;
-    const currentFullText = texts[safeIndex] || "";
+    if (isTyping && displayText !== currentText) {
+      // Show cursor while typing
+      setCursorVisible(true);
 
-    // Variable speed for more natural typing
-    const speed = isDeleting
-      ? deletingSpeed
-      : currentText.length === currentFullText.length
-        ? delayBetweenTexts
-        : typingSpeed + (mounted ? randomRef.current() * 30 : 0);
-
-    if (isDeleting) {
-      // Deleting text
-      if (currentText.length === 0) {
-        setIsDeleting(false);
-        setCurrentTextIndex((prev) => (prev + 1) % texts.length);
-        setIsBlinking(true);
-        timeout = setTimeout(() => setIsBlinking(false), 500);
-      } else {
-        // Delete one character
-        timeout = setTimeout(() => {
-          setCurrentText(currentText.slice(0, -1));
-        }, speed);
-      }
-    } else {
-      // Typing text
-      if (currentText.length === currentFullText.length) {
-        // Finished typing, wait before deleting
-        setIsBlinking(true);
-        timeout = setTimeout(() => {
-          setIsBlinking(false);
-          setIsDeleting(true);
-        }, speed);
-      } else {
-        // Type one character
-        timeout = setTimeout(() => {
-          setCurrentText(currentFullText.slice(0, currentText.length + 1));
-        }, speed);
-      }
+      const timeout = setTimeout(() => {
+        setDisplayText(currentText.substring(0, displayText.length + 1));
+      }, 100);
+      return () => clearTimeout(timeout);
     }
 
-    return () => clearTimeout(timeout);
-  }, [
-    mounted,
-    currentText,
-    currentTextIndex,
-    isDeleting,
-    texts,
-    typingSpeed,
-    deletingSpeed,
-    delayBetweenTexts,
-    isBlinking,
-  ]);
+    if (isTyping && displayText === currentText) {
+      const timeout = setTimeout(() => {
+        setIsDeleting(true);
+        setIsTyping(false);
+      }, 2000);
+      return () => clearTimeout(timeout);
+    }
 
-  // For server-side rendering, return a static placeholder
-  if (typeof window === "undefined" || !mounted) {
-    return <span>{texts[0] || ""}</span>;
-  }
+    if (isDeleting && displayText !== "") {
+      // Show cursor while deleting
+      setCursorVisible(true);
+
+      const timeout = setTimeout(() => {
+        setDisplayText(displayText.substring(0, displayText.length - 1));
+      }, 50);
+      return () => clearTimeout(timeout);
+    }
+
+    if (isDeleting && displayText === "") {
+      setIsDeleting(false);
+      setIsTyping(true);
+      setCurrentTextIndex((currentTextIndex + 1) % texts.length);
+      setKey((prev) => prev + 1);
+    }
+  }, [currentTextIndex, displayText, isDeleting, isTyping, texts]);
 
   return (
-    <span className={`inline-flex ${className}`}>
+    <span className={`relative ${className}`}>
       <AnimatePresence mode="wait">
         <motion.span
-          key={currentText}
-          initial={{ opacity: 0.8 }}
-          animate={{ opacity: 1 }}
-          className="relative"
+          key={key}
+          initial={transitionConfig.exiting}
+          animate={transitionConfig.entering}
+          exit={transitionConfig.exiting}
+          className="inline-block"
         >
-          {currentText}
-          <motion.span
-            className={`ml-0.5 inline-block h-full w-1 bg-current ${cursorClassName}`}
-            animate={{ opacity: isBlinking ? [1, 0, 1] : 1 }}
-            transition={{ duration: 0.8, repeat: isBlinking ? Infinity : 0 }}
-          />
+          {displayText}
         </motion.span>
       </AnimatePresence>
+      <motion.span
+        animate={{ opacity: cursorVisible ? 1 : 0 }}
+        transition={{ duration: 0.1 }}
+        className={`ml-0.5 inline-block h-5 w-[2px] ${cursorClassName}`}
+      ></motion.span>
     </span>
   );
-};
-
-export default Typewriter;
+}
