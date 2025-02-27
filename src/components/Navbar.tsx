@@ -10,11 +10,28 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const lastScrollY = useRef(0);
+  const navRef = useRef<HTMLDivElement>(null);
 
   const pathname = usePathname();
   const isAbout = pathname === "/about";
 
   const isActive = (href: string) => pathname === href;
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!menuOpen) return;
+
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     if (!isAbout) {
@@ -60,7 +77,10 @@ const Navbar = () => {
       } md:translate-y-0`}
     >
       <div className="glass-card-dark border-b border-gray-800/50 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
+        <div
+          ref={navRef}
+          className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
+        >
           {/* Brand / Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <motion.span

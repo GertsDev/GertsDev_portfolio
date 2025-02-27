@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FiMail, FiMapPin, FiSend, FiGithub, FiLinkedin, FiMessageCircle } from "react-icons/fi";
+import { FaXTwitter } from "react-icons/fa6";
 import { Particles } from "~/components/ui/particles";
 
 export default function ContactsPage() {
@@ -160,6 +161,16 @@ export default function ContactsPage() {
                   className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
                 >
                   <FiLinkedin className="h-5 w-5" />
+                </motion.a>
+                <motion.a
+                  href="https://x.com/GertsDev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
+                >
+                  <FaXTwitter className="h-5 w-5" />
                 </motion.a>
               </div>
             </motion.div>
