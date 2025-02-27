@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 import { ThemeProvider } from "~/components/ThemeProvider";
 import { spaceGrotesk, inter, syne } from "~/lib/fonts";
 import dynamic from "next/dynamic";
+import { Analytics } from "@vercel/analytics/react";
 
 // Dynamically import components that might cause hydration issues
 const Navbar = dynamic(() => import("~/components/Navbar"), { ssr: true });
@@ -72,6 +73,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </main>
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
