@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope, FaTelegram } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaXTwitter } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 
 const socialLinks = [
@@ -26,9 +26,9 @@ const socialLinks = [
     hoverColor: "group-hover:text-emerald-400",
   },
   {
-    href: "https://t.me/Gerts_official",
-    icon: FaTelegram,
-    label: "Telegram",
+    href: "https://x.com/GertsDev",
+    icon: FaXTwitter,
+    label: "Twitter / X",
     hoverColor: "group-hover:text-cyan-400",
   },
 ];
@@ -42,7 +42,7 @@ const quickLinks = [
 
 const Footer = () => {
   return (
-    <footer className="relative w-full border-t border-gray-800/50 bg-black/30 backdrop-blur-md min-h-[100dvh] md:min-h-0">
+    <footer className="relative w-full border-t border-gray-800/50 bg-black/30 backdrop-blur-md">
       {/* Gradient line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
 
@@ -173,11 +173,11 @@ const Footer = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="text-center md:text-right"
           >
-            <p className="flex items-center gap-2 text-xs text-gray-500">
+            <p className="flex flex-col items-center gap-2 text-xs text-gray-500 md:flex-row">
               <span>Built with Next.js, Tailwind CSS, and Framer Motion</span>
-              <span className="inline-block h-1 w-1 rounded-full bg-gray-700"></span>
+              <span className="hidden h-1 w-1 rounded-full bg-gray-700 md:inline-block"></span>
               <Link
-                href="https://github.com/GertsDev/gerts.dev"
+                href="https://github.com/GertsDev/GertsDev_portfolio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-gray-500 hover:text-blue-400"

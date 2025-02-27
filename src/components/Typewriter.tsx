@@ -8,6 +8,8 @@ interface TypewriterProps {
   typingSpeed?: number;
   deletingSpeed?: number;
   delayBetweenTexts?: number;
+  className?: string;
+  cursorClassName?: string;
 }
 
 const Typewriter = ({
@@ -15,6 +17,8 @@ const Typewriter = ({
   typingSpeed = 100,
   deletingSpeed = 50,
   delayBetweenTexts = 1500,
+  className = "",
+  cursorClassName = "",
 }: TypewriterProps) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
@@ -42,12 +46,12 @@ const Typewriter = ({
     const safeIndex = currentTextIndex % texts.length;
     const currentFullText = texts[safeIndex] || "";
 
-    // Variable speed for more natural typing - only use random on client side
+    // Variable speed for more natural typing
     const speed = isDeleting
       ? deletingSpeed
       : currentText.length === currentFullText.length
         ? delayBetweenTexts
-        : typingSpeed + (mounted ? randomRef.current() * 50 : 0);
+        : typingSpeed + (mounted ? randomRef.current() * 30 : 0);
 
     if (isDeleting) {
       // Deleting text
@@ -98,7 +102,7 @@ const Typewriter = ({
   }
 
   return (
-    <span className="inline-flex">
+    <span className={`inline-flex ${className}`}>
       <AnimatePresence mode="wait">
         <motion.span
           key={currentText}
@@ -108,7 +112,7 @@ const Typewriter = ({
         >
           {currentText}
           <motion.span
-            className="ml-0.5 inline-block h-full w-0.5 bg-current"
+            className={`ml-0.5 inline-block h-full w-1 bg-current ${cursorClassName}`}
             animate={{ opacity: isBlinking ? [1, 0, 1] : 1 }}
             transition={{ duration: 0.8, repeat: isBlinking ? Infinity : 0 }}
           />
