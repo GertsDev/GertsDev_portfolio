@@ -1,6 +1,7 @@
 ---
-description: To write the best Next.js code possible with Tailwind CSS and shadcn/ui
+description: To write the best Next.js code possible with Tailwind CSS and shadcn/u
 globs: 
+alwaysApply: false
 ---
 
 # Your rule content
