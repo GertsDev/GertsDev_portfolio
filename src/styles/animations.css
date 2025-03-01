@@ -1,0 +1,73 @@
+/* Optimized animations using CSS instead of JavaScript where possible */
+
+/* Waving hand animation */
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-waving-hand {
+  animation: wave 2.5s ease-in-out infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+/* Slow pulse animation for glowing effects */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.9; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Optimized hover transitions */
+.hover-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Optimized glow effect */
+.glow-text {
+  position: relative;
+  z-index: 1;
+}
+
+.glow-text-container:hover .glow-text {
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+  transition: text-shadow 0.5s ease-in-out;
+}
+
+/* Glass card effect */
+.glass-card-dark {
+  background: linear-gradient(145deg, rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.4));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Optimized floating animation using CSS */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Gradient text effect */
+.text-gradient-vibrant {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
