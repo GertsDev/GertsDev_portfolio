@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Particles } from "~/components/ui/particles";
 import Image from "next/image";
 import Link from "next/link";
-import { FiGithub, FiExternalLink, FiArrowRight } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { FiArrowRight, FiExternalLink, FiGithub } from "react-icons/fi";
+import { Particles } from "~/components/ui/particles";
 
 interface Project {
   id: string;
@@ -29,13 +29,13 @@ export default function ProjectsPage() {
   const projects: Project[] = [
     {
       id: "project-1",
-      title: "AI-Powered Chat Platform",
+      title: "Burgerjoint in space",
       description:
-        "A real-time chat application with AI integration using React, Node.js, and OpenAI API for intelligent responses and content generation.",
-      image: "/project-1.jpg",
+        "BurgerVerse is a modern web application that allows users to create and customize their perfect space burger while exploring a unique cosmic dining experience.",
+      image: "/projects_images/burgerverse.jpg",
       tags: ["React", "Node.js", "OpenAI", "Socket.io"],
-      github: "https://github.com/GertsDev/ai-chat-platform",
-      demo: "https://ai-chat.gerts.dev",
+      github: "https://github.com/GertsDev/burgerverse-frontend",
+      demo: "https://burgerverse.space",
       featured: true,
     },
     {
@@ -54,7 +54,7 @@ export default function ProjectsPage() {
       title: "Portfolio Website",
       description:
         "A modern portfolio website built with Next.js, Tailwind CSS, and Framer Motion for smooth animations and transitions.",
-      image: "/project-3.jpg",
+      image: "/projects_images/burgerverse.img",
       tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
       github: "https://github.com/GertsDev/gerts.dev",
       demo: "https://gerts.dev",
@@ -121,8 +121,8 @@ export default function ProjectsPage() {
             <span className="text-gradient-vibrant">My Projects</span>
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-gray-300">
-            A collection of my recent work, showcasing my skills in frontend development, UI/UX
-            design, and full-stack applications.
+            A collection of my recent work, showcasing my skills in frontend, backend development
+            and UI/UX design
           </p>
         </motion.div>
 
@@ -173,7 +173,7 @@ export default function ProjectsPage() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2"
+          className="flex flex-col items-center gap-12"
         >
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project) => (
@@ -181,34 +181,61 @@ export default function ProjectsPage() {
                 key={project.id}
                 variants={item}
                 whileHover={{ y: -10 }}
-                className="glass-card group relative overflow-hidden rounded-xl"
+                className="glass-card group relative w-full max-w-2xl overflow-hidden rounded-2xl shadow-xl"
               >
-                <div className="relative h-48 w-full overflow-hidden rounded-t-xl sm:h-56 md:h-64">
-                  <div className="absolute inset-0 bg-blue-500/10"></div>
-                  <Image
-                    src={project.image || "/project-placeholder.jpg"}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  {project.featured && (
-                    <div className="absolute right-4 top-4 rounded-full bg-blue-600 px-3 py-1 text-xs font-medium text-white">
-                      Featured
+                {/* Make image clickable, go to demo or github */}
+                {project.demo || project.github ? (
+                  <a
+                    href={project.demo || project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${project.title} demo`}
+                    tabIndex={0}
+                    className="block focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-t-2xl"
+                  >
+                    <div className="relative h-64 w-full overflow-hidden rounded-t-2xl sm:h-80 md:h-96">
+                      <div className="absolute inset-0 bg-blue-500/10"></div>
+                      <Image
+                        src={project.image || "/project-placeholder.jpg"}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      {project.featured && (
+                        <div className="absolute right-4 top-4 rounded-full bg-blue-600 px-3 py-1 text-xs font-medium text-white">
+                          Featured
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
+                  </a>
+                ) : (
+                  <div className="relative h-64 w-full overflow-hidden rounded-t-2xl sm:h-80 md:h-96">
+                    <div className="absolute inset-0 bg-blue-500/10"></div>
+                    <Image
+                      src={project.image || "/project-placeholder.jpg"}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    {project.featured && (
+                      <div className="absolute right-4 top-4 rounded-full bg-blue-600 px-3 py-1 text-xs font-medium text-white">
+                        Featured
+                      </div>
+                    )}
+                  </div>
+                )}
 
-                <div className="p-6">
-                  <h3 className="mb-2 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                <div className="p-8">
+                  <h3 className="mb-3 text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="mb-4 text-gray-400">{project.description}</p>
+                  <p className="mb-5 text-lg text-gray-400">{project.description}</p>
 
-                  <div className="mb-6 flex flex-wrap gap-2">
+                  <div className="mb-8 flex flex-wrap gap-3">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-400"
+                        className="rounded-full bg-blue-500/20 px-4 py-1 text-sm font-medium text-blue-400"
                       >
                         {tag}
                       </span>
@@ -216,7 +243,7 @@ export default function ProjectsPage() {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <div className="flex gap-3">
+                    <div className="flex gap-4">
                       {project.github && (
                         <motion.a
                           href={project.github}
@@ -224,9 +251,11 @@ export default function ProjectsPage() {
                           rel="noopener noreferrer"
                           whileHover={{ y: -3 }}
                           whileTap={{ scale: 0.95 }}
-                          className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
+                          className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
+                          aria-label="View on GitHub"
+                          tabIndex={0}
                         >
-                          <FiGithub className="h-5 w-5" />
+                          <FiGithub className="h-6 w-6" />
                         </motion.a>
                       )}
                       {project.demo && (
@@ -236,9 +265,11 @@ export default function ProjectsPage() {
                           rel="noopener noreferrer"
                           whileHover={{ y: -3 }}
                           whileTap={{ scale: 0.95 }}
-                          className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
+                          className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
+                          aria-label="View Live Demo"
+                          tabIndex={0}
                         >
-                          <FiExternalLink className="h-5 w-5" />
+                          <FiExternalLink className="h-6 w-6" />
                         </motion.a>
                       )}
                     </div>
@@ -247,11 +278,13 @@ export default function ProjectsPage() {
                       href={project.demo || project.github || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
+                      className="group inline-flex items-center text-base font-medium text-blue-400 transition-colors hover:text-blue-300"
                       whileHover={{ x: 5 }}
+                      aria-label="View Project Details"
+                      tabIndex={0}
                     >
                       View Details
-                      <FiArrowRight className="ml-1 h-4 w-4" />
+                      <FiArrowRight className="ml-2 h-5 w-5" />
                     </motion.a>
                   </div>
                 </div>
