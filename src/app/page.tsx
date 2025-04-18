@@ -1,6 +1,6 @@
 // Split into server and client components for better performance
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { FiArrowRight, FiGithub } from "react-icons/fi";
 import ClientSideContent from "~/components/ClientSideContent";
 import "~/styles/animations.css"; // Import the CSS animations
@@ -8,16 +8,11 @@ import "~/styles/animations.css"; // Import the CSS animations
 // This is now a Server Component by default (no "use client" directive)
 export default function HomePage() {
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center justify-center px-4 py-16 md:py-24">
+    <section className="relative flex min-h-screen w-full flex-col items-center justify-start px-4 py-16 md:py-24">
       {/* Static content rendered on server */}
       <div className="grid w-full max-w-screen-xl grid-cols-1 items-center gap-12 md:grid-cols-2">
         {/* Text Section - Server Rendered */}
         <div className="flex flex-col items-center md:items-start">
-          <div className="mb-4 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-sm text-blue-400">
-            <span className="mr-1 inline-block h-2 w-2 rounded-full bg-blue-400"></span>
-            Available for hire
-          </div>
-
           {/* Client-side interactive content */}
           <ClientSideContent />
 

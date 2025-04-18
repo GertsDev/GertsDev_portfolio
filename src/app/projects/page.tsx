@@ -33,43 +33,10 @@ export default function ProjectsPage() {
       description:
         "BurgerVerse is a modern web application that allows users to create and customize their perfect space burger while exploring a unique cosmic dining experience.",
       image: "/projects_images/burgerverse.jpg",
-      tags: ["React", "Node.js", "OpenAI", "Socket.io"],
+      tags: ["FullStack", "React", "Redux", "Node.js", "express.js", "mongodb", "auth"],
       github: "https://github.com/GertsDev/burgerverse-frontend",
       demo: "https://burgerverse.space",
       featured: true,
-    },
-    {
-      id: "project-2",
-      title: "E-commerce Dashboard",
-      description:
-        "A comprehensive analytics dashboard for e-commerce businesses with real-time data visualization and inventory management.",
-      image: "/project-2.jpg",
-      tags: ["Next.js", "TypeScript", "Chart.js", "Tailwind CSS"],
-      github: "https://github.com/GertsDev/ecommerce-dashboard",
-      demo: "https://dashboard.gerts.dev",
-      featured: true,
-    },
-    {
-      id: "project-3",
-      title: "Portfolio Website",
-      description:
-        "A modern portfolio website built with Next.js, Tailwind CSS, and Framer Motion for smooth animations and transitions.",
-      image: "/projects_images/burgerverse.img",
-      tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
-      github: "https://github.com/GertsDev/gerts.dev",
-      demo: "https://gerts.dev",
-      featured: false,
-    },
-    {
-      id: "project-4",
-      title: "Weather App",
-      description:
-        "A weather application that provides real-time weather data and forecasts using the OpenWeatherMap API.",
-      image: "/project-4.jpg",
-      tags: ["React", "API Integration", "CSS Modules"],
-      github: "https://github.com/GertsDev/weather-app",
-      demo: "https://weather.gerts.dev",
-      featured: false,
     },
   ];
 
