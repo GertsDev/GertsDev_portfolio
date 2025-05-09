@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
 const Particles = dynamic(() => import("~/components/ui/particles").then((mod) => mod.Particles), {
   loading: () => null,
@@ -326,16 +326,6 @@ export default function About() {
             >
               <FiMail className="mr-2 h-5 w-5" />
               Contact Me
-            </motion.a>
-            <motion.a
-              href="/GertsDev_CV.pdf"
-              download
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex w-full items-center justify-center rounded-lg border border-gray-700 bg-gray-800/50 px-6 py-3 text-base font-medium text-white backdrop-blur-sm sm:w-auto"
-            >
-              <FiDownload className="mr-2 h-5 w-5" />
-              Download Resume
             </motion.a>
           </div>
         </motion.section>
