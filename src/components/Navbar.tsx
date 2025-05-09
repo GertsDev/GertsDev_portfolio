@@ -96,17 +96,6 @@ const Navbar = () => {
 
           {/* Right side: Resume + Mobile Menu Button */}
           <div className="flex items-center space-x-3 md:order-2">
-            <motion.a
-              href="/GertsDev_CV.pdf"
-              download
-              target="_blank"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 focus:ring-4 focus:ring-blue-800 focus:outline-none"
-            >
-              Download Resume
-            </motion.a>
-
             {/* Hide burger button on md+ screens */}
             <motion.button
               whileHover={{ scale: 1.1 }}
