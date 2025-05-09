@@ -4,9 +4,9 @@ import { AnimatePresence, motion } from "motion/react";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { sortsMillGoudy } from "public/fonts";
 import { useEffect, useRef, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { sortsMillGoudy } from "~/lib/fonts";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);

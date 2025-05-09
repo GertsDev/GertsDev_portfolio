@@ -1,16 +1,16 @@
-import "~/styles/globals.css";
 import "~/styles/animations.css";
+import "~/styles/globals.css";
 
+import { Analytics } from "@vercel/analytics/react";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-import { ThemeProvider } from "~/components/ThemeProvider";
-import { spaceGrotesk, inter, syne } from "~/lib/fonts";
 import dynamic from "next/dynamic";
-import { Analytics } from "@vercel/analytics/react";
+import { inter, spaceGrotesk, syne } from "public/fonts";
+import { ThemeProvider } from "~/components/ThemeProvider";
 
 // Dynamically import components that might cause hydration issues
 const Navbar = dynamic(() => import("~/components/Navbar"), { ssr: true });
-const Footer = dynamic(() => import("~/components/Footer"), { ssr: true });
+const Footer = dynamic(() => import("~/components/footer/Footer"), { ssr: true });
 const ClientParticlesWrapper = dynamic(() => import("~/components/ClientParticlesWrapper"));
 
 const host = process.env.NEXT_PUBLIC_HOST ?? "http://localhost:3000";
