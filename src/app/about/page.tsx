@@ -1,10 +1,15 @@
 "use client";
 
+import { motion } from "motion/react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { FiDownload, FiMail, FiGithub, FiLinkedin } from "react-icons/fi";
-import { useState, useEffect } from "react";
-import { Particles } from "~/components/ui/particles";
+import { useEffect, useState } from "react";
+import { FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+
+const Particles = dynamic(() => import("~/components/ui/particles").then((mod) => mod.Particles), {
+  loading: () => null,
+  ssr: false,
+});
 
 export default function About() {
   const [mounted, setMounted] = useState(false);

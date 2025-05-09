@@ -1,8 +1,8 @@
 "use client";
 
+import { motion } from "motion/react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope, FaXTwitter } from "react-icons/fa6";
+import { FaEnvelope, FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { FiExternalLink } from "react-icons/fi";
 
 const socialLinks = [

@@ -1,17 +1,18 @@
 "use client";
+
+import { AnimatePresence, motion } from "motion/react";
+
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { sortsMillGoudy } from "~/lib/fonts";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
+import { sortsMillGoudy } from "~/lib/fonts";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const lastScrollY = useRef(0);
   const navRef = useRef<HTMLDivElement>(null);
-
   const pathname = usePathname();
   const isAbout = pathname === "/about";
 

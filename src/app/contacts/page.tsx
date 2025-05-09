@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { FiMail, FiMapPin, FiSend, FiGithub, FiLinkedin, FiMessageCircle } from "react-icons/fi";
+import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 import { FaXTwitter } from "react-icons/fa6";
+import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiMessageCircle, FiSend } from "react-icons/fi";
 import { Particles } from "~/components/ui/particles";
 
 export default function ContactsPage() {

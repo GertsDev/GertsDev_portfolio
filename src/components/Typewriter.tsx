@@ -1,7 +1,7 @@
 // components/Typewriter.tsx
 "use client";
-import { useState, useEffect, useCallback, memo } from "react";
-import { motion, AnimatePresence, TargetAndTransition } from "framer-motion";
+import { AnimatePresence, motion, TargetAndTransition } from "motion/react";
+import { memo, useCallback, useEffect, useState } from "react";
 
 interface TypewriterProps {
   texts: string[];
