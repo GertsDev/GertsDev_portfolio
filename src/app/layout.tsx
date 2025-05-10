@@ -6,13 +6,13 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import dynamic from "next/dynamic";
 
-import { ThemeProvider } from "components/ThemeProvider";
+import { ThemeProvider } from "components/providers/ThemeProvider";
 import { inter, spaceGrotesk, syne } from "../../public/fonts";
 
 // Dynamically import components that might cause hydration issues
-const Navbar = dynamic(() => import("components/Navbar"), { ssr: true });
+const Navbar = dynamic(() => import("components/layout/Navbar"), { ssr: true });
 const Footer = dynamic(() => import("components/footer/Footer"), { ssr: true });
-const ClientParticlesWrapper = dynamic(() => import("components/ClientParticlesWrapper"));
+const ClientParticlesWrapper = dynamic(() => import("components/ui/ClientParticlesWrapper"));
 
 const host = process.env.NEXT_PUBLIC_HOST ?? "http://localhost:3000";
 

@@ -1,15 +1,18 @@
 "use client";
 
+import HeroSection, { SocialLink } from "components/about/HeroSection";
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
-const Particles = dynamic(() => import("components/ui/particles").then((mod) => mod.Particles), {
-  loading: () => null,
-  ssr: false,
-});
+const ParticlesBackground = dynamic(
+  () => import("components/ui/particles").then((mod) => mod.Particles),
+  {
+    loading: () => null,
+    ssr: false,
+  }
+);
 
 export default function About() {
   const [mounted, setMounted] = useState(false);
@@ -62,95 +65,49 @@ export default function About() {
     },
   ];
 
+  const socialLinks: SocialLink[] = [
+    {
+      href: "https://github.com/GertsDev",
+      label: "GitHub",
+      icon: <FiGithub className="h-5 w-5 text-white" />,
+    },
+    {
+      href: "https://linkedin.com/in/GertsDev",
+      label: "LinkedIn",
+      icon: <FiLinkedin className="h-5 w-5 text-white" />,
+    },
+    {
+      href: "mailto:hello@gerts.dev",
+      label: "Email",
+      icon: <FiMail className="h-5 w-5 text-white" />,
+    },
+  ];
+
   return (
     <div className="relative min-h-screen w-full">
       {/* Particle background */}
       {mounted && (
-        <Particles className="absolute inset-0 -z-10" quantity={100} color="#60a5fa" speed={0.2} />
+        <ParticlesBackground
+          className="absolute inset-0 -z-10"
+          quantity={100}
+          color="#60a5fa"
+          speed={0.2}
+        />
       )}
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="container mx-auto max-w-5xl px-4 py-16 sm:px-6 md:py-24"
+        className="container mx-auto max-w-5xl px-4 py-16 mt-7 sm:px-6 md:py-24"
       >
         {/* Hero Section */}
-        <section className="mb-2 md:mb-2 ">
-          <div className="glass-card-dark relative overflow-hidden rounded-3xl">
-            <div className="flex flex-col items-center justify-center px-4 py-16 md:px-8 md:py-24">
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="relative mb-8"
-              >
-                <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 opacity-75 blur"></div>
-                <Image
-                  src="/about-avatar.png"
-                  alt="Kirill Gertsik"
-                  width={150}
-                  height={150}
-                  className="relative rounded-full border-2 border-white/20 object-cover"
-                />
-              </motion.div>
-
-              <motion.h1
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="mb-4 text-center text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl"
-              >
-                Kirill Gertsik
-              </motion.h1>
-
-              <motion.p
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-                className="mb-8 text-center text-xl font-light text-gray-300 md:text-2xl"
-              >
-                Frontend Developer in NYC
-              </motion.p>
-
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-                className="flex flex-wrap justify-center gap-4"
-              >
-                <motion.a
-                  href="https://github.com/GertsDev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm transition-all hover:bg-white/20"
-                >
-                  <FiGithub className="h-5 w-5 text-white" />
-                </motion.a>
-                <motion.a
-                  href="https://linkedin.com/in/GertsDev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm transition-all hover:bg-white/20"
-                >
-                  <FiLinkedin className="h-5 w-5 text-white" />
-                </motion.a>
-                <motion.a
-                  href="mailto:hello@gerts.dev"
-                  whileHover={{ y: -5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm transition-all hover:bg-white/20"
-                >
-                  <FiMail className="h-5 w-5 text-white" />
-                </motion.a>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+        <HeroSection
+          avatarSrc="/about-avatar.png"
+          name="Kirill Gertsik"
+          title="Frontend Developer in NYC"
+          socialLinks={socialLinks}
+        />
 
         {/* Quick Stats */}
         <motion.section

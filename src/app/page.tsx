@@ -1,5 +1,5 @@
 // Split into server and client components for better performance
-import ClientSideContent from "components/ClientSideContent";
+import ClientSideContent from "components/home/ClientSideContent";
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight, FiGithub } from "react-icons/fi";

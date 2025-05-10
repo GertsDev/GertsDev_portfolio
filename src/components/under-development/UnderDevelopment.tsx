@@ -1,10 +1,10 @@
 "use client";
 
+import { Particles } from "components/ui/particles";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "components/ui/tooltip";
 import { cn } from "lib/utils";
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { Particles } from "./ui/particles";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 
 // Modern 3D text effect with WebGL
 function GlitchText({ text, className }: { text: string; className?: string }) {
