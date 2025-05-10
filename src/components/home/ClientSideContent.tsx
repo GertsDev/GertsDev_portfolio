@@ -47,43 +47,45 @@ export default function ClientSideContent() {
   };
 
   return (
-    <h1 className="mb-6 mt-10 md:mt-0 max-w-2xl text-center text-4xl font-extrabold tracking-tight md:text-left md:text-5xl xl:text-6xl">
-      <span className="block">
-        Hey there! <span className="animate-waving-hand inline-block">👋</span>
-      </span>
-      <motion.span
-        className="mt-2 block relative glow-text-container"
-        variants={glowTextContainer}
-        initial="hidden"
-        animate="show"
-      >
-        <motion.span variants={glowTextItem} className="relative inline-block glow-text">
-          I&apos;m
-        </motion.span>{" "}
-        <motion.span variants={glowTextItem} className="relative inline-block glow-text">
-          a
-        </motion.span>{" "}
-        <span className="relative inline-block">
-          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-lg blur-md opacity-70 animate-pulse-slow"></div>
-          <div className="relative">
-            <Typewriter
-              texts={["Frontend Developer", "UI/UX Innovator", "Tech Enthusiast"]}
-              className="relative inline-block text-blue-400 md:text-inherit glow-text"
-              cursorClassName="bg-blue-400 md:bg-white/80"
-              transitionConfig={{
-                entering: {
-                  opacity: [0, 1],
-                  transition: { duration: 0.5, ease: "easeOut" },
-                },
-                exiting: {
-                  opacity: [1, 0],
-                  transition: { duration: 0.5, ease: "easeIn" },
-                },
-              }}
-            />
-          </div>
+    <div className="h-35 md:h-50 flex justify-center">
+      <h1 className="  max-w-2xl text-center text-4xl font-extrabold tracking-tight md:text-left md:text-5xl xl:text-6xl ">
+        <span className="block">
+          Hey there! <span className="animate-waving-hand inline-block">👋</span>
         </span>
-      </motion.span>
-    </h1>
+        <motion.span
+          className="mt-2 block relative glow-text-container"
+          variants={glowTextContainer}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.span variants={glowTextItem} className="relative inline-block glow-text">
+            I&apos;m
+          </motion.span>{" "}
+          <motion.span variants={glowTextItem} className="relative inline-block glow-text">
+            a
+          </motion.span>{" "}
+          <span className="relative inline-block">
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-lg blur-md opacity-70 animate-pulse-slow"></div>
+            <div className="relative">
+              <Typewriter
+                texts={["Frontend Developer", "UI/UX Innovator", "Tech Enthusiast"]}
+                className="relative inline-block text-blue-400 md:text-inherit glow-text"
+                cursorClassName="bg-blue-400 md:bg-white/80"
+                transitionConfig={{
+                  entering: {
+                    opacity: [0, 1],
+                    transition: { duration: 0.5, ease: "easeOut" },
+                  },
+                  exiting: {
+                    opacity: [1, 0],
+                    transition: { duration: 0.5, ease: "easeIn" },
+                  },
+                }}
+              />
+            </div>
+          </span>
+        </motion.span>
+      </h1>
+    </div>
   );
 }
