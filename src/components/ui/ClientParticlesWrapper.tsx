@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 
 // Dynamically import the ParticlesBackground component with ssr: false
-const ParticlesBackground = dynamic(() => import("~/components/ParticlesBackground"), {
+const ParticlesBackground = dynamic(() => import("components/ui/ParticlesBackground"), {
   ssr: false,
 });
 

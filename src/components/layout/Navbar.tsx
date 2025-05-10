@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "motion/react";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { sortsMillGoudy } from "public/fonts";
 import { useEffect, useRef, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 
@@ -85,12 +84,12 @@ const Navbar = () => {
           {/* Brand / Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <motion.span
-              className={`self-center text-3xl ${sortsMillGoudy.className} text-gradient-subtle`}
+              className="self-center text-3xl font-sorts-mill text-gradient-subtle"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               Gerts
-              <span className={`${sortsMillGoudy.className} text-gradient-vibrant`}>Dev</span>
+              <span className="font-sorts-mill text-gradient-vibrant">Dev</span>
             </motion.span>
           </Link>
 

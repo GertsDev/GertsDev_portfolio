@@ -1,7 +1,5 @@
-import UnderDevelopment from "~/components/UnderDevelopment";
+import UnderDevelopment from "components/under-development/UnderDevelopment";
 
-const BlogPage = () => {
-  return <UnderDevelopment />;
-};
+const BlogPage = () => <UnderDevelopment />;
 
 export default BlogPage;

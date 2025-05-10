@@ -1,12 +1,12 @@
 "use client";
 
+import ContactForm from "components/contacts/ContactForm";
+import ContactHeader from "components/contacts/ContactHeader";
+import ContactInformation from "components/contacts/ContactInformation";
+import { Particles } from "components/ui/particles";
 import { track } from "@vercel/analytics/react";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import ContactForm from "~/components/contacts/ContactForm";
-import ContactHeader from "~/components/contacts/ContactHeader";
-import ContactInformation from "~/components/contacts/ContactInformation";
-import { Particles } from "~/components/ui/particles";
 
 export default function ContactsPage() {
   const [mounted, setMounted] = useState(false);

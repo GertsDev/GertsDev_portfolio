@@ -7,6 +7,12 @@ const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"], // Sets Inter as the default sans-serif font
+        syne: ["var(--font-syne)", "sans-serif"],
+        "space-grotesk": ["var(--font-space-grotesk)", "monospace"], // Example, monospace is a fallback
+        "sorts-mill": ["var(--font-sorts-mill-goudy)", "serif"], // Example, serif is a fallback
+      },
       colors: {
         navy: "#0F172A",
         accent: "#3B82F6",

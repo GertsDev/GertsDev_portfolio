@@ -1,8 +1,9 @@
-import { Sorts_Mill_Goudy, Space_Grotesk, Inter, Syne } from "next/font/google";
+import { Inter, Sorts_Mill_Goudy, Space_Grotesk, Syne } from "next/font/google";
 
 export const sortsMillGoudy = Sorts_Mill_Goudy({
   weight: "400",
   subsets: ["latin"],
+  variable: "--font-sorts-mill-goudy",
 });
 
 export const spaceGrotesk = Space_Grotesk({

@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState } from "react";
 
 // Dynamically import the Particles component with reduced priority
-const Particles = dynamic(() => import("~/components/ui/particles").then((mod) => mod.Particles), {
+const Particles = dynamic(() => import("components/ui/particles").then((mod) => mod.Particles), {
   ssr: false,
   loading: () => null, // Don't show anything while loading
 });
