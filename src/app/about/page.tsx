@@ -67,8 +67,6 @@ export default function About() {
           title="Frontend Developer | 3 Years of Commercial Experience"
           socialLinks={socialLinks}
         />
-        {/* Quick Stats */}
-        {/* <QuickStats /> */}
 
         {/* Technical Skills */}
         <SkillsGrid skills={skills} />

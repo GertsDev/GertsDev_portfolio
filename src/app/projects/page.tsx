@@ -31,7 +31,7 @@ export default function ProjectsPage() {
       id: "project-1",
       title: "Burgerjoint in space",
       description:
-        "BurgerVerse is a modern web application that allows users to create and customize their perfect space burger while exploring a unique cosmic dining experience.",
+        "Someday, we'll reach interplanetary levels—Mars is just around the corner! In the meantime, I've channeled that cosmic ambition into this project. It's a sleek, responsive web interface that's as satisfying as a perfectly grilled burger. Built with clean, efficient code, it not only looks great but also delivers stellar performance. Ready to launch into the digital cosmos? Let's explore together!",
       image: "/projects_images/burgerverse.jpg",
       tags: ["FullStack", "React", "Redux", "Node.js", "express.js", "mongodb", "auth"],
       github: "https://github.com/GertsDev/burgerverse-frontend",
