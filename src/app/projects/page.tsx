@@ -1,11 +1,11 @@
 "use client";
 
+import { Particles } from "components/ui/particles";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FiArrowRight, FiExternalLink, FiGithub } from "react-icons/fi";
-import { Particles } from "~/components/ui/particles";
 
 interface Project {
   id: string;

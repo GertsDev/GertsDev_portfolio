@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef } from "react";
 
 // Dynamically import Typewriter with improved loading strategy and reduced bundle size
-const Typewriter = dynamic(() => import("~/components/Typewriter"), {
+const Typewriter = dynamic(() => import("components/Typewriter"), {
   ssr: false,
   loading: () => <span className="text-blue-400">Frontend Developer</span>,
 });

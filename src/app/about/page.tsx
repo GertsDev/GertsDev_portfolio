@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
-const Particles = dynamic(() => import("~/components/ui/particles").then((mod) => mod.Particles), {
+const Particles = dynamic(() => import("components/ui/particles").then((mod) => mod.Particles), {
   loading: () => null,
   ssr: false,
 });

@@ -1,9 +1,9 @@
 // Split into server and client components for better performance
+import ClientSideContent from "components/ClientSideContent";
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight, FiGithub } from "react-icons/fi";
-import ClientSideContent from "~/components/ClientSideContent";
-import "~/styles/animations.css"; // Import the CSS animations
+import "styles/animations.css"; // Import the CSS animations
 
 // This is now a Server Component by default (no "use client" directive)
 export default function HomePage() {
