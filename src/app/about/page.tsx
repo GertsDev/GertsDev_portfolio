@@ -5,6 +5,7 @@ import ProjectsGrid from "components/about/ProjectsGrid";
 import SkillsGrid from "components/about/SkillsGrid";
 import { projects, skills } from "components/about/pageData";
 import { motion } from "motion/react";
+import React from "react";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
 export default function About() {
