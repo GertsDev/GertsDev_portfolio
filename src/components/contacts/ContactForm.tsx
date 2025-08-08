@@ -40,7 +40,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           animate={{ opacity: 1, scale: 1 }}
           className="flex flex-col items-center justify-center rounded-lg bg-green-500/20 p-8 text-center"
         >
-          <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/30">
+          <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/30">
             <svg
               className="h-8 w-8 text-green-400"
               fill="none"
@@ -75,7 +75,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 value={formState.name}
                 onChange={handleChange}
                 required
-                className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-white placeholder-gray-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300/50"
                 placeholder="John Doe"
                 aria-label="Your Name"
               />
@@ -91,7 +91,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 value={formState.email}
                 onChange={handleChange}
                 required
-                className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-white placeholder-gray-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300/50"
                 placeholder="john@example.com"
                 aria-label="Your Email"
               />
@@ -108,7 +108,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
               value={formState.subject}
               onChange={handleChange}
               required
-              className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-white placeholder-gray-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300/50"
               placeholder="Project Inquiry"
               aria-label="Subject"
             />
@@ -124,7 +124,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
               onChange={handleChange}
               required
               rows={5}
-              className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-3 text-white placeholder-gray-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-300/50"
               placeholder="Tell me about your project..."
               aria-label="Message"
             ></textarea>
@@ -134,7 +134,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             disabled={isSubmitting}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className={`inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 text-base font-medium text-white shadow-lg shadow-blue-500/20 transition-all hover:shadow-blue-500/40 ${isSubmitting ? "cursor-not-allowed opacity-70" : ""}`}
+            className={`inline-flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-zinc-700 to-zinc-500 px-6 py-3 text-base font-medium text-white shadow-lg shadow-neutral-700/20 transition-all hover:shadow-neutral-500/40 ${isSubmitting ? "cursor-not-allowed opacity-70" : ""}`}
             aria-label={isSubmitting ? "Sending message" : "Send message"}
           >
             {isSubmitting ? (

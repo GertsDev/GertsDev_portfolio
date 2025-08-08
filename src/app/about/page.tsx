@@ -5,25 +5,9 @@ import ProjectsGrid from "components/about/ProjectsGrid";
 import SkillsGrid from "components/about/SkillsGrid";
 import { projects, skills } from "components/about/pageData";
 import { motion } from "motion/react";
-import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
-const ParticlesBackground = dynamic(
-  () => import("components/ui/particles").then((mod) => mod.Particles),
-  {
-    loading: () => null,
-    ssr: false,
-  }
-);
-
 export default function About() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const socialLinks: SocialLink[] = [
     {
       href: "https://github.com/GertsDev",
@@ -44,16 +28,6 @@ export default function About() {
 
   return (
     <div className="relative min-h-screen w-full">
-      {/* Particle background */}
-      {mounted && (
-        <ParticlesBackground
-          className="absolute inset-0 -z-10"
-          quantity={100}
-          color="#60a5fa"
-          speed={0.2}
-        />
-      )}
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -39,7 +39,7 @@
     "**/*.cjs",
     "**/*.js",
     ".next/types/**/*.ts",
-    "scr"
+    "src"
   ],
   "exclude": ["node_modules"]
 }

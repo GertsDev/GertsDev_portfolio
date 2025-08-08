@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     url: `${host}`,
     images: [
       {
-        url: `${host}/og-preview.jpg`,
+        url: `${host}/OG-PREVIEW.jpg`,
         width: 1200,
         height: 630,
         alt: "Preview of GertsDev Portfolio",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "GertsDev | Kirill Gertsik's Portfolio",
     description:
       "Showcasing Kirill Gertsik's best web development projects, skills, and experience.",
-    images: [`${host}/og-preview.jpg`],
+    images: [`${host}/OG-PREVIEW.jpg`],
   },
 };
 
@@ -64,13 +64,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${GeistSans.variable} ${spaceGrotesk.variable} ${inter.variable} ${syne.variable}`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-screen flex-col bg-background text-foreground antialiased">
+      <body className="theme-apple flex min-h-screen flex-col bg-background text-foreground antialiased scroll-smooth">
         <ThemeProvider>
           <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-black"></div>
           <div className="fixed inset-0 -z-10 bg-grid-white/[0.02] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black_70%)]"></div>
+          <a
+            href="#content"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 z-50 rounded bg-accent px-3 py-2 text-sm text-background"
+          >
+            Skip to content
+          </a>
           <ClientParticlesWrapper />
           <Navbar />
-          <main className="flex flex-grow flex-col items-center justify-center w-full">
+          <main id="content" className="flex flex-grow flex-col items-center justify-center w-full">
             {children}
           </main>
           <Footer />

@@ -37,14 +37,14 @@ const ContactInformation = () => {
       </motion.div>
 
       <motion.div variants={item} className="mb-6 flex items-start">
-        <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500/20">
-          <FiMail className="h-5 w-5 text-blue-400" />
+        <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-800">
+          <FiMail className="h-5 w-5 text-neutral-200" />
         </div>
         <div>
           <h3 className="text-lg font-medium text-white">Email</h3>
           <a
             href="mailto:hello@gerts.dev"
-            className="text-gray-300 transition-colors hover:text-blue-400"
+            className="text-gray-300 transition-colors hover:text-neutral-100"
             aria-label="Email Gerts Dev at hello@gerts.dev"
           >
             hello@gerts.dev
@@ -53,8 +53,8 @@ const ContactInformation = () => {
       </motion.div>
 
       <motion.div variants={item} className="mb-6 flex items-start">
-        <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500/20">
-          <FiMapPin className="h-5 w-5 text-blue-400" />
+        <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-800">
+          <FiMapPin className="h-5 w-5 text-neutral-200" />
         </div>
         <div>
           <h3 className="text-lg font-medium text-white">Location</h3>
@@ -63,8 +63,8 @@ const ContactInformation = () => {
       </motion.div>
 
       <motion.div variants={item} className="mb-8 flex items-start">
-        <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500/20">
-          <FiMessageCircle className="h-5 w-5 text-blue-400" />
+        <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-neutral-800">
+          <FiMessageCircle className="h-5 w-5 text-neutral-200" />
         </div>
         <div>
           <h3 className="text-lg font-medium text-white">Availability</h3>
@@ -81,7 +81,7 @@ const ContactInformation = () => {
             rel="noopener noreferrer"
             whileHover={{ y: -5 }}
             whileTap={{ scale: 0.95 }}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-neutral-700 hover:text-white"
             aria-label="Visit GertsDev's GitHub profile"
             tabIndex={0}
           >
@@ -93,7 +93,7 @@ const ContactInformation = () => {
             rel="noopener noreferrer"
             whileHover={{ y: -5 }}
             whileTap={{ scale: 0.95 }}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-neutral-700 hover:text-white"
             aria-label="Visit GertsDev's LinkedIn profile"
             tabIndex={0}
           >
@@ -105,7 +105,7 @@ const ContactInformation = () => {
             rel="noopener noreferrer"
             whileHover={{ y: -5 }}
             whileTap={{ scale: 0.95 }}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-colors hover:bg-neutral-700 hover:text-white"
             aria-label="Visit GertsDev's X (formerly Twitter) profile"
             tabIndex={0}
           >

@@ -1,3 +1,5 @@
+"use client";
+
 import type { Project } from "components/about/pageData";
 import { motion } from "motion/react";
 import type { FC } from "react";
@@ -47,7 +49,7 @@ const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => (
           className="glass-card group relative overflow-hidden rounded-xl"
         >
           <div className="p-6">
-            <h3 className="mb-2 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+            <h3 className="mb-2 text-xl font-bold text-white group-hover:text-neutral-100 transition-colors">
               {project.title}
             </h3>
             <p className="mb-4 text-gray-400">{project.description}</p>
@@ -55,7 +57,7 @@ const ProjectsGrid: FC<ProjectsGridProps> = ({ projects }) => (
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-blue-500/20 px-3 py-1 text-sm font-medium text-blue-400"
+                  className="rounded-full bg-neutral-800 px-3 py-1 text-sm font-medium text-neutral-200"
                 >
                   {tag}
                 </span>

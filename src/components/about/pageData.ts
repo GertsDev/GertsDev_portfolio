@@ -29,12 +29,12 @@ export type Skill = {
 };
 
 export const skills: Skill[] = [
-  { name: "React", level: "95%", color: "from-blue-500 to-cyan-400" },
+  { name: "React", level: "95%", color: "from-zinc-400 to-zinc-200" },
   { name: "Next.js", level: "90%", color: "from-gray-800 to-gray-600" },
-  { name: "TypeScript", level: "85%", color: "from-blue-600 to-blue-400" },
-  { name: "Node.js", level: "80%", color: "from-green-600 to-green-400" },
-  { name: "GraphQL", level: "85%", color: "from-pink-600 to-pink-400" },
+  { name: "TypeScript", level: "85%", color: "from-zinc-500 to-zinc-300" },
+  { name: "Node.js", level: "80%", color: "from-emerald-600 to-emerald-400" },
+  { name: "GraphQL", level: "85%", color: "from-fuchsia-600 to-fuchsia-400" },
   { name: "Tailwind", level: "90%", color: "from-cyan-600 to-cyan-400" },
-  { name: "Redux", level: "80%", color: "from-purple-600 to-purple-400" },
-  { name: "AWS", level: "75%", color: "from-yellow-600 to-yellow-400" },
+  { name: "Redux", level: "80%", color: "from-violet-600 to-violet-400" },
+  { name: "AWS", level: "75%", color: "from-amber-600 to-amber-400" },
 ];

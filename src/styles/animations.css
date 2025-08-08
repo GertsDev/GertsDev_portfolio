@@ -2,14 +2,30 @@
 
 /* Waving hand animation */
 @keyframes wave {
-  0% { transform: rotate(0deg); }
-  10% { transform: rotate(14deg); }
-  20% { transform: rotate(-8deg); }
-  30% { transform: rotate(14deg); }
-  40% { transform: rotate(-4deg); }
-  50% { transform: rotate(10deg); }
-  60% { transform: rotate(0deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .animate-waving-hand {
@@ -20,8 +36,13 @@
 
 /* Slow pulse animation for glowing effects */
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 0.9; }
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.9;
+  }
 }
 
 .animate-pulse-slow {
@@ -53,11 +74,25 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
+/* Neutral glass card utility */
+.glass-card {
+  background: linear-gradient(145deg, rgba(17, 24, 39, 0.6), rgba(17, 24, 39, 0.35));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 /* Optimized floating animation using CSS */
 @keyframes float {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(0.5deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
 }
 
 .animate-float {

@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 // Dynamically import Typewriter with improved loading strategy and reduced bundle size
 const Typewriter = dynamic(() => import("components/ui/Typewriter"), {
   ssr: false,
-  loading: () => <span className="text-blue-400">Frontend Developer</span>,
+  loading: () => <span className="text-neutral-200">Frontend Developer</span>,
 });
 
 export default function ClientSideContent() {
@@ -65,12 +65,12 @@ export default function ClientSideContent() {
             a
           </motion.span>{" "}
           <span className="relative inline-block">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-lg blur-md opacity-70 animate-pulse-slow"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-neutral-700/30 to-neutral-500/30 rounded-lg blur-md opacity-70 animate-pulse-slow"></div>
             <div className="relative">
               <Typewriter
                 texts={["Frontend Developer", "UI/UX Innovator", "Tech Enthusiast"]}
-                className="relative inline-block text-blue-400 md:text-inherit glow-text"
-                cursorClassName="bg-blue-400 md:bg-white/80"
+                className="relative inline-block text-neutral-200 md:text-inherit glow-text"
+                cursorClassName="bg-neutral-200 md:bg-white/80"
                 transitionConfig={{
                   entering: {
                     opacity: [0, 1],

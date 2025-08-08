@@ -10,12 +10,16 @@ import { FiMenu, FiX } from "react-icons/fi";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNav, setShowNav] = useState(true);
+  const [activeSection, setActiveSection] = useState<string>("home");
   const lastScrollY = useRef(0);
   const navRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const isAbout = pathname === "/about";
 
-  const isActive = (href: string) => pathname === href;
+  const isActive = (href: string) => {
+    if (href.startsWith("#")) return href.slice(1) === activeSection;
+    return pathname === href;
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -59,13 +63,52 @@ const Navbar = () => {
     };
   }, [isAbout]);
 
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/projects", label: "Projects" },
-    { href: "/blog", label: "Blog" },
-    { href: "/contacts", label: "Contacts" },
+  const navLinks: { href: string; label: string }[] = [
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#skills", label: "Skills" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
   ];
+
+  const handleNavClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
+    const href = event.currentTarget.getAttribute("href") ?? "";
+    if (href.startsWith("#")) {
+      event.preventDefault();
+      const targetId = href.slice(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      setMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    const sectionIds = navLinks
+      .map((l) => (l.href.startsWith("#") ? l.href.slice(1) : null))
+      .filter(Boolean) as string[];
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (elements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { root: null, rootMargin: "0px 0px -40% 0px", threshold: 0.4 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   return (
     <motion.nav
@@ -134,16 +177,16 @@ const Navbar = () => {
                       href={link.href}
                       className={`relative block rounded px-3 py-2 transition-colors duration-200 md:p-0 ${
                         isActive(link.href)
-                          ? "text-blue-500"
-                          : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-blue-500"
+                          ? "text-neutral-200"
+                          : "text-white hover:bg-gray-800/50 md:hover:bg-transparent md:hover:text-neutral-200"
                       }`}
                       aria-current={isActive(link.href) ? "page" : undefined}
-                      onClick={() => setMenuOpen(false)}
+                      onClick={handleNavClick}
                     >
                       {link.label}
                       {isActive(link.href) && (
                         <motion.span
-                          className="absolute bottom-0 left-0 h-0.5 w-full bg-blue-500 md:block hidden"
+                          className="absolute bottom-0 left-0 h-0.5 w-full bg-neutral-300 md:block hidden"
                           layoutId="navbar-indicator"
                           transition={{ type: "spring", stiffness: 350, damping: 30 }}
                         />

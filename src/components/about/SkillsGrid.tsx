@@ -1,3 +1,5 @@
+"use client";
+
 import type { Skill } from "components/about/pageData";
 import { motion } from "motion/react";
 import type { FC } from "react";
@@ -43,7 +45,7 @@ const SkillsGrid: FC<SkillsGridProps> = ({ skills }) => (
         <motion.div key={skill.name} variants={item} className="glass-card rounded-xl p-5">
           <div className="mb-3 flex justify-between">
             <span className="font-medium text-white">{skill.name}</span>
-            <span className="text-blue-400">{skill.level}</span>
+            <span className="text-neutral-300">{skill.level}</span>
           </div>
           <div className="h-2 overflow-hidden rounded-full bg-gray-700/50">
             <motion.div
